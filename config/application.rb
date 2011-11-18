@@ -16,7 +16,7 @@ Bundler.require *Rails.groups(:assets) if defined?(Bundler)
 require File.expand_path('../../app/models/setting', __FILE__)
 
 module Profiles
-  VERSION = '0.1.2.pre'
+  VERSION = '0.1.2'
 
   class Application < Rails::Application
     # Settings in config/environments/* take precedence over those specified here.
