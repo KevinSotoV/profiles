@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111005204001) do
+ActiveRecord::Schema.define(:version => 20111118224452) do
 
   create_table "friendships", :force => true do |t|
     t.integer  "profile_id"
@@ -97,7 +97,7 @@ ActiveRecord::Schema.define(:version => 20111005204001) do
     t.string   "workflow_state",                        :default => "pending_review"
     t.integer  "roles"
     t.string   "timezone",               :limit => 50
-    t.string   "fb_token",               :limit => 100
+    t.string   "fb_token"
   end
 
   add_index "users", ["authentication_token"], :name => "index_users_on_authentication_token", :unique => true
