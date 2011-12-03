@@ -36,7 +36,6 @@ class Theme < ActiveRecord::Base
     self.bg_image_byline = info['credit'].to_s + (info['license-short'] ? " (#{info['license-short']})" : '')
     self.bg_image_tiled  = info['format'] == 'tiled'
     self.bg_class        = info['class']
-    self.box_pos         = info['box_pos']
   end
 
   def bg_color_top=(color)
@@ -94,13 +93,13 @@ class Theme < ActiveRecord::Base
 
     def backgrounds
       {
-        scaled: image_info.select { |bg| bg['format'] != 'tiled' },
-        tiled:  image_info.select { |bg| bg['format'] == 'tiled' }
+        :scaled => image_info.select { |bg| bg['format'] != 'tiled' },
+        :tiled  => image_info.select { |bg| bg['format'] == 'tiled' }
       }
     end
 
     def backgrounds_by_filename
-      image_info.each_with_object({}) { |bg, h| h[bg['filename']] = bg }
+      image_info.inject({}) { |h, bg| h[bg['filename']] = bg; h }
     end
   end
 end

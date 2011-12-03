@@ -1,4 +1,5 @@
 require 'yaml'
+require File.expand_path('../../../app/models/setting', __FILE__)
 
 namespace :profiles do
   namespace :heroku do

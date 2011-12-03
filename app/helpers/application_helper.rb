@@ -16,7 +16,7 @@ module ApplicationHelper
       obj = form_or_resource
     end
     if obj.errors.any?
-      content_tag(:div, class: 'error_explanation') do
+      content_tag(:div, :class => 'error_explanation') do
         content_tag(:h3, t('feedback.form_errors_heading')) +
         content_tag(:ul) do
           obj.errors.map do |attribute, message|
@@ -82,4 +82,25 @@ module ApplicationHelper
     end
   end
 
+  def check_box_fields(label, fields)
+    content_tag(:div, :class => 'clearfix') do
+      label_tag(fields.first[:name], label) +
+      content_tag(:div, :class => 'input') do
+        content_tag(:ul, :class => 'inputs-list') do
+          fields.map do |field|
+            content_tag(:li, :class => 'inline') do
+              (field[:value] == true ? hidden_field_tag(field[:name], false, :id => nil) : '') +
+              check_box_tag(field[:name], field[:value], field[:checked]) +
+              ' ' +
+              label_tag(field[:name], field[:label])
+            end
+          end.join.html_safe
+        end
+      end
+    end
+  end
+
+  def check_box_field(label, name, value, checked)
+    check_box_fields(label, [{:name => name, :value => value, :checked => checked}])
+  end
 end

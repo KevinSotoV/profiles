@@ -5,6 +5,7 @@ gem 'rails', '~> 3.1.0'
 gem 'pg'
 gem 'devise'
 gem 'omniauth'
+gem 'omniauth-facebook'
 gem 'fb_graph'
 gem 'haml'
 gem 'workflow'
@@ -28,11 +29,11 @@ end
 group :development do
 end
 
-group :testing do
+group :test do
   gem 'rspec-rails'
-  gem 'mocha'
-  gem 'bourne'
+  gem 'rspec-spies'
   gem 'factory_girl_rails'
+  gem 'steak'
   gem 'spork'
   gem 'watchr'
 end

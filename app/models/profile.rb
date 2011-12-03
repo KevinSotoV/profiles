@@ -13,6 +13,7 @@ class Profile < ActiveRecord::Base
   belongs_to :user
   has_many :friendships, :dependent => :destroy
   has_many :friends, :through => :friendships
+  has_many :messages
   has_one :theme, :order => 'id', :dependent => :destroy
 
   scope :visible, where(:workflow_state => 'visible')
@@ -26,9 +27,12 @@ class Profile < ActiveRecord::Base
   validates_inclusion_of :gender, :in => %w(m f), :allow_nil => true
   validates_length_of :location, :maximum => 50
   validates_length_of :phone, :maximum => 50
+  validates_presence_of :user_id
   validates_uniqueness_of :user_id
 
   attr_accessible :name, :headline, :bio, :gender, :birthday, :location, :phone, :facebook_id, :facebook_url, :small_image_url, :full_image_url, :theme_attributes, :alerts
+
+  delegate :email, :to => :user
 
   blank_to_nil
 
@@ -54,12 +58,13 @@ class Profile < ActiveRecord::Base
     write_attribute(:bio, b.to_s[0...Setting.s('profile.bio_max_length').to_i])
   end
 
-  def update_from_oauth_access_token!(access_token)
-    data = access_token['extra']['user_hash']
+  def update_from_oauth!(access_token)
+    data = access_token['extra']['raw_info']
     self.small_image_url = "http://graph.facebook.com/#{access_token['uid']}/picture?type=square"
     self.full_image_url  = "http://graph.facebook.com/#{access_token['uid']}/picture?type=large"
     self.gender          = {"male" => "m", "female" => "f"}[data["gender"].downcase]
     self.facebook_url    = data["link"]
+    self.facebook_id     = access_token["uid"]
     self.name            = data["name"]
     self.location        = data["location"] && data["location"]["name"]
     self.phone           = data["phone"] if data["phone"]
@@ -92,5 +97,10 @@ class Profile < ActiveRecord::Base
       d = Date.new(d.year + 1, d.month, d.day) until d >= Date.today
       return d
     end
+  end
+
+  after_create :new_profile_notification
+  def new_profile_notification
+    AdminMailer.new_profile_notifications
   end
 end

@@ -1,7 +1,7 @@
 %h2= t('session.log_in_heading')
 
 %p.push-down
-  = link_to image_tag('fb_login.png', alt: 'session.log_in_with_facebook', style: 'vertical-align:middle;'),
+  = link_to image_tag('fb_login.png', alt: t('session.log_in_with_facebook'), style: 'vertical-align:middle;'),
     user_omniauth_authorize_path(:facebook)
 
 %hr
@@ -15,5 +15,6 @@
   %fieldset.actions
     .right
       = link_to t('registration.sign_up_button'), new_registration_path(resource_name), :class => 'btn'
-      = link_to t('registration.forgot_password_button'), new_password_path(resource_name), :class => 'btn'
+      - if email?
+        = link_to t('registration.forgot_password_button'), new_password_path(resource_name), :class => 'btn'
     = form.submit t('session.log_in_button'), :class => 'btn primary'

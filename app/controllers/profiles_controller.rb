@@ -13,6 +13,7 @@ class ProfilesController < ApplicationController
   end
 
   def create
+    @profile = current_user.build_profile
     if @profile.update_attributes(params[:profile])
       flash[:success] = t('profile.edit_form.save_success')
     end
@@ -25,7 +26,11 @@ class ProfilesController < ApplicationController
 
   def update
     if @profile.update_attributes(params[:profile])
-      flash[:success] = t('profile.edit_form.save_success')
+      if params[:profile][:theme_attributes]
+        flash[:success] = t('profile.edit_form.save_success_refresh')
+      else
+        flash[:success] = t('profile.edit_form.save_success')
+      end
     end
     respond_with(@profile)
   end
