@@ -25,6 +25,7 @@
     = tab_content '#theme' do
       = simple_form_for @profile, :remote => !@profile.new_record? do |form|
         = form.simple_fields_for :theme do |theme|
+          = theme.input :bg_image, :as => :hidden
           .clearfix
             %label{:style => 'padding-top:10px;'}= t('profile.edit_form.theme.background')
             .input
@@ -46,7 +47,6 @@
               = theme.input :bg_color_top, :input_html => {:class => 'color'}
               = theme.input :box_pos, :include_blank => false, |
                 :collection => {t('profile.edit_form.theme.box_pos.left') => 'left', t('profile.edit_form.theme.box_pos.right') => 'right'}
-          = theme.input :bg_image, :as => :hidden
         .actions
           = form.submit t('profile.edit_form.save'), :class => 'btn primary'
           = link_to t('profile.edit_form.cancel'), @profile, :class => 'btn close-btn'

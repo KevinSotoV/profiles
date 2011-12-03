@@ -36,7 +36,6 @@ class Theme < ActiveRecord::Base
     self.bg_image_byline = info['credit'].to_s + (info['license-short'] ? " (#{info['license-short']})" : '')
     self.bg_image_tiled  = info['format'] == 'tiled'
     self.bg_class        = info['class']
-    self.box_pos         = info['box_pos']
   end
 
   def bg_color_top=(color)
