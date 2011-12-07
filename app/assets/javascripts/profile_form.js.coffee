@@ -1,3 +1,5 @@
+#= require 'jquery.miniColors'
+
 $('.color').miniColors
   change: ->
     $('.bg-selector .img').removeClass('selected')
@@ -15,3 +17,8 @@ $('#profile_theme_attributes_bg_color_top').change (e)->
   unless $(e.target).val() == ''
     $('.bg-selector .img').removeClass('selected')
     $('#profile_theme_attributes_bg_image').val('')
+
+$('#box_bg_opacity').slider
+  value: $('#profile_theme_attributes_box_bg_opacity').val()*100
+  change: (e, ui) ->
+    $('#profile_theme_attributes_box_bg_opacity').val ui.value/100

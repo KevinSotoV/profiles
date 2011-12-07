@@ -47,6 +47,11 @@
               = theme.input :bg_color_top, :input_html => {:class => 'color'}
               = theme.input :box_pos, :include_blank => false, |
                 :collection => {t('profile.edit_form.theme.box_pos.left') => 'left', t('profile.edit_form.theme.box_pos.right') => 'right'}
+          .clearfix
+            = theme.label :box_bg_opacity
+            .input
+              = theme.hidden_field :box_bg_opacity
+              #box_bg_opacity
         .actions
           = form.submit t('profile.edit_form.save'), :class => 'btn primary'
           = link_to t('profile.edit_form.cancel'), @profile, :class => 'btn close-btn'
@@ -61,6 +66,5 @@
           = link_to t('profile.edit_form.cancel'), @profile, :class => 'btn close-btn'
         .status
 
-= stylesheet_link_tag 'jquery.miniColors.css'
-= javascript_include_tag 'jquery.miniColors.js'
+= stylesheet_link_tag 'profile_form'
 = javascript_include_tag 'profile_form'

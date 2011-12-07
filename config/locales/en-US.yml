@@ -22,6 +22,7 @@ en-US:
         bio: Bio
       theme:
         bg_color_top: Color
+        box_bg_opacity: Opacity
         box_pos: Overlay Position
       user:
         admin: Admin
