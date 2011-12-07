@@ -188,9 +188,10 @@ en-US:
 
   search:
     results:
-      none: No profiles found.
-      heading: Search Results
       account_limited_warning_html: Your account hasn't been validated by an admin yet, so you can only see your own profile.
+      heading: Search Results
+      none: No profiles found.
+      title: Search Results
 
   session:
     log_in_button: Log In

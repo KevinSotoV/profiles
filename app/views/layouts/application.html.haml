@@ -2,9 +2,8 @@
 %html
   %head
     %title
-      = s('site.name')
-      - if @sub_title
-        == / #{@sub_title}
+      = Setting.s('site.name')
+      = "- #{@title}" if @title
     = stylesheet_link_tag    "application"
     = javascript_include_tag "application"
     = csrf_meta_tags
