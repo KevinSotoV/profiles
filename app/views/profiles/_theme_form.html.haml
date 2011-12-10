@@ -1,0 +1,31 @@
+= simple_form_for @profile, :remote => !@profile.new_record? do |form|
+  = form.simple_fields_for :theme do |theme|
+    = theme.input :bg_image, :as => :hidden
+    .clearfix
+      %label{:style => 'padding-top:10px;'}= t('profile.edit_form.theme.background')
+      .input
+        %ul.pills{'data-pills' => 'pills'}
+          = tab_link t('profile.edit_form.theme.tabs.scaled'), '#scaled_images'
+          = tab_link t('profile.edit_form.theme.tabs.tiled'), '#tiled_images'
+          = tab_link t('profile.edit_form.theme.tabs.color'), '#color'
+    .pill-content
+      = tab_content '#scaled_images' do
+        .input.bg-selector
+          = render :partial => 'image', :collection => @backgrounds[:scaled]
+      = tab_content '#tiled_images' do
+        .input.bg-selector
+          = render :partial => 'image', :collection => @backgrounds[:tiled]
+      = tab_content '#color' do
+        = theme.input :bg_color_top, :input_html => {:class => 'color'}
+    = theme.input :box_pos, :include_blank => false, |
+      :collection => t('profile.edit_form.theme.box_pos').invert
+    = theme.input :box_bg_color, :input_html => {:class => 'color'}
+    .clearfix
+      = theme.label :box_bg_opacity
+      .input
+        = theme.hidden_field :box_bg_opacity
+        #box_bg_opacity
+  .actions
+    = form.submit t('profile.edit_form.save'), :class => 'btn primary'
+    = link_to t('profile.edit_form.cancel'), @profile, :class => 'btn close-btn'
+  .status

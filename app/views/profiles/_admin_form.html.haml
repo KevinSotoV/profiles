@@ -1,0 +1,7 @@
+= simple_form_for @profile.user, :remote => true, :url => admin_user_path(@profile.user) do |user|
+  = user.input :admin, :as => :b_boolean
+  = check_box_fields t('profile.edit_form.admin.notifications.label'), [{:name => 'user[new_profile_notification]', :value => true, :label => t('profile.edit_form.admin.notifications.new_profile'), :checked => @profile.user.new_profile_notification?}]
+  .actions
+    = user.submit t('profile.edit_form.save'), :class => 'btn primary'
+    = link_to t('profile.edit_form.cancel'), @profile, :class => 'btn close-btn'
+  .status
