@@ -31,7 +31,7 @@ module ThemesHelper
   # use theme_markup
   def theme_stylesheet_link_tag
     return unless @profile && @profile.theme
-    stylesheet_link_tag(profile_theme_path(@profile, :m => @profile.theme.updated_at.to_f))
+    stylesheet_link_tag(profile_theme_path(@profile, :m => @profile.theme.updated_at.to_f), :class => 'theme-stylesheet')
   end
 
   # build a css font shorthand rule

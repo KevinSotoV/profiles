@@ -30,23 +30,21 @@
             %label{:style => 'padding-top:10px;'}= t('profile.edit_form.theme.background')
             .input
               %ul.pills{'data-pills' => 'pills'}
-                %li
-                  %a{:href => '#scaled_images'}= t('profile.edit_form.theme.tabs.scaled')
-                %li
-                  %a{:href => '#tiled_images'}= t('profile.edit_form.theme.tabs.tiled')
-                %li
-                  %a{:href => '#color'}= t('profile.edit_form.theme.tabs.color')
+                = tab_link t('profile.edit_form.theme.tabs.scaled'), '#scaled_images'
+                = tab_link t('profile.edit_form.theme.tabs.tiled'), '#tiled_images'
+                = tab_link t('profile.edit_form.theme.tabs.color'), '#color'
           .pill-content
-            #scaled_images
+            = tab_content '#scaled_images' do
               .input.bg-selector
                 = render :partial => 'image', :collection => @backgrounds[:scaled]
-            #tiled_images
+            = tab_content '#tiled_images' do
               .input.bg-selector
                 = render :partial => 'image', :collection => @backgrounds[:tiled]
-            #color
+            = tab_content '#color' do
               = theme.input :bg_color_top, :input_html => {:class => 'color'}
-              = theme.input :box_pos, :include_blank => false, |
-                :collection => {t('profile.edit_form.theme.box_pos.left') => 'left', t('profile.edit_form.theme.box_pos.right') => 'right'}
+          = theme.input :box_pos, :include_blank => false, |
+            :collection => t('profile.edit_form.theme.box_pos').invert
+          = theme.input :box_bg_color, :input_html => {:class => 'color'}
           .clearfix
             = theme.label :box_bg_opacity
             .input

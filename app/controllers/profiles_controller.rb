@@ -26,11 +26,7 @@ class ProfilesController < ApplicationController
 
   def update
     if @profile.update_attributes(params[:profile])
-      if params[:profile][:theme_attributes]
-        flash[:success] = t('profile.edit_form.save_success_refresh')
-      else
-        flash[:success] = t('profile.edit_form.save_success')
-      end
+      flash[:success] = t('profile.edit_form.save_success')
     end
     respond_with(@profile)
   end

@@ -22,3 +22,10 @@ $('#box_bg_opacity').slider
   value: $('#profile_theme_attributes_box_bg_opacity').val()*100
   change: (e, ui) ->
     $('#profile_theme_attributes_box_bg_opacity').val ui.value/100
+
+$ ->
+  if (img = $('.bg-selector .img.selected')).length > 0
+    section = img.parent().parent().parent().attr('id')
+    $(".pills a[href=\"##{section}\"]").click()
+  else
+    $('.pills a[href="#color"]').click()

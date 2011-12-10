@@ -21,9 +21,10 @@ en-US:
         phone: Phone
         bio: Bio
       theme:
-        bg_color_top: Color
-        box_bg_opacity: Opacity
-        box_pos: Overlay Position
+        bg_color_top: BG Color
+        box_bg_opacity: Box Opacity
+        box_pos: Box Position
+        box_bg_color: Box Color
       user:
         admin: Admin
         current_password: Current Password
@@ -158,7 +159,6 @@ en-US:
         nil: Unspecified
       save: Save
       save_success: Your profile has been saved.
-      save_success_refresh: Your profile has been saved. You may need to refresh the page in order to see all your changes.
       tabs:
         admin: Admin
         profile: Profile

@@ -11,3 +11,4 @@
 //= require bootstrap-tabs
 //= require controls
 //= require forms
+//= require theme
