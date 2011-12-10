@@ -10,7 +10,6 @@
     $('#profile-box').html("<%=j render :partial => 'box' %>");
     renderMap();
   } else {
-    location.hash = 'theme';
-    location.reload();
+    location.href = '?tab=theme';
   }
 <% end %>

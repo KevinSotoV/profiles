@@ -13,7 +13,3 @@ $ ->
 
   # pjax
   $('a[data-pjax]').pjax()
-
-  # switch tab
-  if location.hash
-    $(".tabs a[href=\"#{location.hash}\"]").click()
