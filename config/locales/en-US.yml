@@ -21,10 +21,13 @@ en-US:
         phone: Phone
         bio: Bio
       theme:
+        bio_color: Bio Color
         bg_color_top: BG Color
+        box_bg_color: Box Color
         box_bg_opacity: Box Opacity
         box_pos: Box Position
-        box_bg_color: Box Color
+        headline_color: Headline Color
+        name_color: Name Color
       user:
         admin: Admin
         current_password: Current Password
