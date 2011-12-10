@@ -25,7 +25,7 @@ $('#box_bg_opacity').slider
 
 $ ->
   if (img = $('.bg-selector .img.selected')).length > 0
-    section = img.parent().parent().parent().attr('id')
+    section = "#{img.data('image-type')}_images"
     $(".pills a[href=\"##{section}\"]").click()
   else
     $('.pills a[href="#color"]').click()

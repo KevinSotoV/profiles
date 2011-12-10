@@ -10,16 +10,21 @@
           = tab_link t('profile.edit_form.theme.tabs.color'), '#color'
     .pill-content
       = tab_content '#scaled_images' do
-        .input.bg-selector
-          = render :partial => 'image', :collection => @backgrounds[:scaled]
+        .clearfix
+          .input.bg-selector
+            = render :partial => 'image', :collection => @backgrounds[:scaled]
       = tab_content '#tiled_images' do
-        .input.bg-selector
-          = render :partial => 'image', :collection => @backgrounds[:tiled]
+        .clearfix
+          .input.bg-selector
+            = render :partial => 'image', :collection => @backgrounds[:tiled]
       = tab_content '#color' do
         = theme.input :bg_color_top, :input_html => {:class => 'color'}
     = theme.input :box_pos, :include_blank => false, |
       :collection => t('profile.edit_form.theme.box_pos').invert
-    = theme.input :box_bg_color, :input_html => {:class => 'color'}
+    = theme.input :box_bg_color,   :input_html => {:class => 'color'}
+    = theme.input :name_color,     :input_html => {:class => 'color'}
+    = theme.input :headline_color, :input_html => {:class => 'color'}
+    = theme.input :bio_color,      :input_html => {:class => 'color'}
     .clearfix
       = theme.label :box_bg_opacity
       .input

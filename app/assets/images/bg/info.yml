@@ -1,5 +1,6 @@
 - filename: /assets/bg/A_storm_at_Pors-Loubous.jpg
   tn_filename: /assets/bg/A_storm_at_Pors-Loubous.tn.jpg
+  format: scaled
   description: A storm at Pors-Loubous, Plogoff, Finistère, France
   license: This file is licensed under the Creative Commons Attribution 1.0 Generic license.
   license-short: CC-BY-1.0
@@ -10,6 +11,7 @@
 
 - filename: /assets/bg/IrvingJohnstonAground.jpg
   tn_filename: /assets/bg/IrvingJohnstonAground.tn.jpg
+  format: scaled
   description: The tall ship Irving Johnson lies hard aground, only yards from shore, near the entrance to Channel Islands Harbor, Oxnard, California, March 2005.
   license: This image or file is a work of a United States Coast Guard service personnel or employee, taken or made during the course of that person's official duties. As a work of the U.S. federal government, the image or file is in the public domain (17 U.S.C. § 101 and § 105, USCG main privacy policy and specific privacy policy for its imagery server).
   license-short: public domain
@@ -20,6 +22,7 @@
 
 - filename: /assets/bg/Broadway_tower_edit.jpg
   tn_filename: /assets/bg/Broadway_tower_edit.tn.jpg
+  format: scaled
   description: Broadway Tower, Cotswolds, England. Edited version of photo by Newton2, cropped one person from the left.
   license: This file is licensed under the Creative Commons Attribution 2.5 Generic license.
   license-short: CC-BY-2.5
@@ -30,6 +33,7 @@
 
 - filename: /assets/bg/Disney_Concert_Hall_by_Carol_Highsmith_edit.jpg
   tn_filename: /assets/bg/Disney_Concert_Hall_by_Carol_Highsmith_edit.tn.jpg
+  format: scaled
   description: The Walt Disney Concert Hall, home to the Los Angeles Philharmonic, features an acoustically superior auditorium paneled in hardwood. The Disney family contributed more than $100 million to the project.
   license: This work has been released into the public domain by its author, Carol M. Highsmith. This applies worldwide.
   license-short: public domain
@@ -40,6 +44,7 @@
 
 - filename: /assets/bg/Grand_Canyon_Horse_Shoe_Bend_MC.jpg
   tn_filename: /assets/bg/Grand_Canyon_Horse_Shoe_Bend_MC.tn.jpg
+  format: scaled
   description: The Horseshoe Bend of the Colorado River is located a few kilometers south of the city of Page in Arizona. Panorama stitched from 2x10 portrait format images.
   license: This file is licensed under the Creative Commons Attribution 2.5 Generic license.
   license-short: CC-BY-3.0
@@ -50,6 +55,7 @@
 
 - filename: /assets/bg/Narzisse.jpg
   tn_filename: /assets/bg/Narzisse.tn.jpg
+  format: scaled
   description: Wild daffodil
   license: This file is licensed under the Creative Commons Attribution 3.0 Unported license.
   license-short: CC-BY-3.0
@@ -60,6 +66,7 @@
 
 - filename: /assets/bg/Underwater_mcmurdo_sound.jpg
   tn_filename: /assets/bg/Underwater_mcmurdo_sound.tn.jpg
+  format: scaled
   description: This image of an ice wall and the ocean floor at Explorer's Cover, New Harbor. McMurdo Sound is adjacent to remote-controlled photographic equipment.
   license: This image is a work of a National Science Foundation employee, taken or made during the course of the person's official duties. As a work of the U.S. federal government, the image is in the public domain.
   license-short: public domain
@@ -70,6 +77,7 @@
 
 - filename: /assets/bg/Mount-Yamnuska2-Szmurlo.jpg
   tn_filename: /assets/bg/Mount-Yamnuska2-Szmurlo.tn.jpg
+  format: scaled
   description: Officially known as Mount John Laurie, Yamnuska is the popular name for this mountain in Kananaskis Country west of Calgary, Alberta, Canada.
   license: This file is licensed under the Creative Commons Attribution 3.0 Unported license.
   license-short: CC-BY-3.0
@@ -80,6 +88,7 @@
 
 - filename: /assets/bg/Pahoeoe_fountain_edit2.jpg
   tn_filename: /assets/bg/Pahoeoe_fountain_edit2.tn.jpg
+  format: scaled
   description: Arching fountain of a Pahoehoe approximately 10 m high issuing from the western end of the 0740 vents, a series of spatter cones 170 m long, south of Pu‘u Kahaualea.
   license: This image is in the public domain because it contains materials that originally came from the United States Geological Survey, an agency of the United States Department of Interior. For more information, see the official USGS copyright policy.
   license-short: public domain
@@ -90,6 +99,7 @@
 
 - filename: /assets/bg/Locomotives-Roundhouse2.jpg
   tn_filename: /assets/bg/Locomotives-Roundhouse2.tn.jpg
+  format: scaled
   description: Steam locomotives of the Chicago & North Western Railway in the roundhouse at the Chicago, Illinois rail yards.
   license: This work is in the public domain in the United States because it is a work of the United States Federal Government under the terms of Title 17, Chapter 1, Section 105 of the US Code.
   license-short: public domain
@@ -100,6 +110,7 @@
 
 - filename: /assets/bg/360-degree_Panorama_of_the_Southern_Sky.jpg
   tn_filename: /assets/bg/360-degree_Panorama_of_the_Southern_Sky.tn.jpg
+  format: scaled
   description: The Milky Way arches across the night sky above the Paranal Observatory, home of ESO’s Very Large Telescope.
   license: This file is licensed under the Creative Commons Attribution 3.0 Unported license.
   license-short: CC-BY-3.0
@@ -110,6 +121,7 @@
 
 - filename: /assets/bg/AgamaSinaita01_ST_10.jpg
   tn_filename: /assets/bg/AgamaSinaita01_ST_10.tn.jpg
+  format: scaled
   description: Male Agama sinaita, Jordan. This species is common in deserts around the shores of the Red Sea. While in heat, the male turns striking blue to attract females.
   license: The copyright holder of this file, Ester Inbar, allows anyone to use it for any purpose, provided that the copyright holder is properly attributed. Redistribution, derivative work, commercial use, and all other use is permitted.
   license-short: attribution required
@@ -120,6 +132,7 @@
 
 - filename: /assets/bg/Red_eyed_tree_frog_edit2.jpg
   tn_filename: /assets/bg/Red_eyed_tree_frog_edit2.tn.jpg
+  format: scaled
   description: Red-eyed Tree Frog (Agalychnis callidryas), photographed near Playa Jaco in Costa Rica (retouched version).
   license: This work has been released into the public domain by its author, Careyjamesbalboa at the wikipedia project. This applies worldwide.
   license-short: public domain
@@ -130,6 +143,7 @@
 
 - filename: /assets/bg/Laser_Towards_Milky_Ways_Centre.jpg
   tn_filename: /assets/bg/Laser_Towards_Milky_Ways_Centre.tn.jpg
+  format: scaled
   description: ESO’s Paranal Observatory, observing the centre of the Milky Way using the laser guide star facility at Yepun.
   license: This file is licensed under the Creative Commons Attribution 3.0 Unported license.
   license-short: CC-BY-3.0
@@ -140,6 +154,7 @@
 
 - filename: /assets/bg/Eilean_Donan_castle_-_95mm.jpg
   tn_filename: /assets/bg/Eilean_Donan_castle_-_95mm.tn.jpg
+  format: scaled
   description: Eilean Donan castle, in the Scottish Highlands.
   license: This file is licensed under the Creative Commons Attribution 3.0 Unported license.
   license-short: CC-BY-3.0
@@ -150,6 +165,7 @@
 
 - filename: /assets/bg/PinkTugBoatToy.jpg
   tn_filename: /assets/bg/PinkTugBoatToy.tn.jpg
+  format: scaled
   description: A pink tug boat toy floating in a kiddie pool.
   license: This file is licensed under the Creative Commons Attribution 3.0 Unported license.
   license-short: CC-BY-3.0
