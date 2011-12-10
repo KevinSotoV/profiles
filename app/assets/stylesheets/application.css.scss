@@ -119,6 +119,12 @@ html,body{background:none;}
   }
 }
 
+.home-text {
+  @extend .span5;
+  @extend .offset11;
+  @extend .columns;
+}
+
 /* Profile - - - - - - - - */
 
 .headline {
@@ -342,3 +348,17 @@ form.message {
 .bday-icon  { @include icon-sprite(3) }
 .edit-icon  { @include icon-sprite(4) }
 .email-icon { @include icon-sprite(5) }
+
+/* Mobile - - - - - - - - - */
+
+@media only screen and (max-width:940px) {
+  .container {
+    width: auto;
+  }
+  #home-container #home-image {
+    background-position: top right;
+  }
+  .row > .home-text {
+    margin: 0 0 0 auto;
+  }
+}
