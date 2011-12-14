@@ -7,3 +7,4 @@ tmp/
 .sass-cache/
 .idea
 vendor/plugins
+public/stylesheets
