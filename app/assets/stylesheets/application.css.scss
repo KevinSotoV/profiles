@@ -182,6 +182,10 @@ html,body{background:none;}
   }
 }
 
+.my-profile-pic:hover {
+  @include opacity(0.5);
+}
+
 .links {
   a {
     display: inline-block;

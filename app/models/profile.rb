@@ -36,6 +36,14 @@ class Profile < ActiveRecord::Base
 
   blank_to_nil
 
+  before_save :set_image_urls
+
+  def set_image_urls
+    base = "http://www.gravatar.com/avatar/#{user.gravatar_hash}"
+    self.small_image_url ||= "#{base}?s=50"
+    self.full_image_url  ||= "#{base}?s=180"
+  end
+
   # alerts
   bitmask :alerts, :as => [:new, :new_theme]
   before_create { alerts << :new }

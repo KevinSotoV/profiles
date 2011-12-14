@@ -176,6 +176,9 @@ en-US:
           tiled: Tiled
           color: Color
     friends: Friends
+    pic_alt:
+      facebook: Log into Facebook.com to change your profile picture.
+      gravatar: Log into Gravatar.com to change your profile picture.
     send_message: Send Message
     theme:
       bg_image_byline_html: "%{name} by %{byline}"

@@ -14,11 +14,13 @@ module ProfilesHelper
   }
 
   def profile_pic_tag(profile, type=:full)
-    content_tag(:div, :class => 'pic') do
-      if url = {:full => profile.full_image_url, :tn => profile.small_image_url}[type]
-        image_tag(url, :alt => profile.name)
-      else
-        image_tag(SILHOUETTE_IMAGES[type][profile.gender], :alt => profile.name)
+    me = profile == current_user.profile
+    source = profile.facebook_id ? 'facebook' : 'gravatar'
+    if url = {:full => profile.full_image_url, :tn => profile.small_image_url}[type]
+      content_tag(:div, :class => 'pic') do
+        class_name = "#{source}-profile-pic #{me ? 'my-profile-pic' : ''}"
+        alt = me ? t(source, :scope => 'profile.pic_alt') : profile.name
+        image_tag(url, :alt => alt, :title => alt, :class => class_name)
       end
     end
   end
