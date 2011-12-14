@@ -213,7 +213,7 @@ DEPENDENCIES
   bootstrap-sass
   cancan
   coffee-rails (~> 3.1.1)
-  compass (>= 0.12.alpha.0)
+  compass (>= 0.12.alpha)
   devise
   factory_girl_rails
   fb_graph
