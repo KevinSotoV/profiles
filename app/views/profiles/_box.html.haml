@@ -1,32 +1,42 @@
-- if can? :edit, @profile
-  .controls
-    = link_to content_tag(:span, '', :class => 'edit-icon'), edit_profile_path(@profile), 'data-pjax' => '#aux', :title => t('profile.edit_button'), :class => 'btn small'
+#profile-box{:class => @profile.theme.box_pos}
+  - if can? :edit, @profile
+    .controls
+      .link= link_to '', edit_profile_path(@profile), 'data-pjax' => '#aux', :title => t('profile.edit_button'), :class => 'edit-icon'
 
-%h2.name= @profile.name
+  %h2.name= @profile.name
 
-.content
-  = profile_pic_tag(@profile)
+  .content
+    = profile_pic_tag(@profile)
 
-  - if @profile.headline
-    .headline= @profile.headline
+    - if @profile.headline
+      .headline= @profile.headline
 
-  .links
-    - if @profile.facebook_url
-      = link_to simple_url(@profile.facebook_url), @profile.facebook_url, :class => 'fb-icon'
-    - if @profile.phone
-      = link_to @profile.phone, "tel:#{@profile.phone}", :class => 'phone-icon'
-    = link_to t('profile.send_message'), new_profile_message_url(@profile), 'data-pjax' => '#aux', :class => 'email-icon'
+    - if @profile.member_since
+      .member-since
+        = t('profile.member_since', :year => @profile.member_since)
 
-  .bio
-    = profile_bio(@profile)
+    .links
+      - if @profile.facebook_url
+        .link= link_to '', @profile.facebook_url, :class => 'fb-icon', :rel => 'popover', :title => t('profile.links.facebook'), 'data-content' => @profile.facebook_url
+      - if @profile.phone
+        .link= link_to '', "tel:#{@profile.phone}", :class => 'phone-icon', :rel => 'popover', :title => t('profile.links.phone'), 'data-content' => @profile.phone
+      .link= link_to '', new_profile_message_url(@profile), 'data-pjax' => '#aux', :class => 'email-icon', :rel => 'popover', :title => t('profile.links.message')
+      - if @profile.birthday
+        .link= link_to '', event_url(@profile.next_birthday, t('profile.birthday', :name => @profile.name)), :class => 'bday-icon', :target => '_blank', :rel => 'popover', :title => t('profile.links.birthday'), 'data-content' => l(@profile.next_birthday, :format => :birthday)
 
-  - if @profile.location
-    .map
-    = hidden_field_tag :location, @profile.location
+    .clear
 
-  -# TODO
-  -#- if @profile.friends.any?
-    -#%h3= t('profile.friends')
-    -#%p
-      -#- @profile.friends.each do |friend|
-        -#= link_to(image_tag(friend.small_image_url, :alt => friend.name), friend)
+    .bio
+      = profile_bio(@profile)
+
+    - if @profile.location
+      .map
+      = hidden_field_tag :location, @profile.location
+
+    -# TODO
+    -#- if @profile.friends.any?
+      -#%h3= t('profile.friends')
+      -#%p
+        -#- @profile.friends.each do |friend|
+          -#= link_to(image_tag(friend.small_image_url, :alt => friend.name), friend)
+

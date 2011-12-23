@@ -41,20 +41,22 @@
 <% end %>
 
 #profile-box {
-  background-color: rgba(red(<%= @theme.box_bg_color %>), green(<%= @theme.box_bg_color %>), blue(<%= @theme.box_bg_color %>), <%= @theme.box_bg_opacity %>);
+  $bg: rgba(<%= @theme.box_bg_color %>, <%= @theme.box_bg_opacity %>);
+  background-color: $bg;
   .content {
     color: #fff;
   }
   .name {
     font: <%= font_style(@theme, 'name') %>;
     color: <%= @theme.name_color %>;
+    background-color: rgba(#000, 0.4);
   }
   .headline {
     font: <%= font_style(@theme, 'headline') %>;
     color: <%= @theme.headline_color %>;
   }
   .bio {
-    font: <%= font_style(@theme, 'bio') %>;
+    //font: <%= font_style(@theme, 'bio') %>;
     color: <%= @theme.bio_color %>;
     a {
       color: <%= @theme.bio_color %>;

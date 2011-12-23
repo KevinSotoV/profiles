@@ -31,6 +31,8 @@
         = theme.hidden_field :box_bg_opacity
         #box_bg_opacity
   .actions
+    .right
+      = link_to t('profile.edit_form.reset'), [@profile, :theme], :method => :delete, :confirm => t('profile.edit_form.confirm_reset'), :class => 'btn'
     = form.submit t('profile.edit_form.save'), :class => 'btn primary'
     = link_to t('profile.edit_form.cancel'), @profile, :class => 'btn close-btn'
   .status

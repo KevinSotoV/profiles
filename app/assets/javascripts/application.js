@@ -9,6 +9,8 @@
 //= require jquery_ujs
 //= require jquery.pjax
 //= require bootstrap-tabs
+//= require bootstrap-twipsy
+//= require bootstrap-popover
 //= require controls
 //= require forms
 //= require theme

@@ -30,7 +30,7 @@ class Profile < ActiveRecord::Base
   validates_presence_of :user_id
   validates_uniqueness_of :user_id
 
-  attr_accessible :name, :headline, :bio, :gender, :birthday, :location, :phone, :facebook_id, :facebook_url, :small_image_url, :full_image_url, :theme_attributes, :alerts
+  attr_accessible :name, :headline, :bio, :gender, :birthday, :member_since, :location, :phone, :facebook_id, :facebook_url, :small_image_url, :full_image_url, :theme_attributes, :alerts
 
   delegate :email, :to => :user
 

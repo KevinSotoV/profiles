@@ -46,14 +46,14 @@ class Theme < ActiveRecord::Base
   class << self
     extend ActiveSupport::Memoizable
 
-    def build_with_defaults
+    def build_with_defaults(bg_class=nil)
       theme = Theme.new(
-        :box_bg_color         => '#000',
-        :box_bg_opacity       => 0.6,
-        :name_font_family     => 'Ubuntu',
+        :box_bg_color         => bg_class == 'dark' ? '#fff' : '#000',
+        :box_bg_opacity       => 0.5,
+        :name_font_family     => 'Handlee',
         :name_size            => 28,
         :name_color           => '#fff',
-        :headline_font_family => 'Ubuntu',
+        :headline_font_family => 'Handlee',
         :headline_font_style  => 'italic',
         :headline_size        => 16,
         :headline_color       => '#fff',
@@ -73,14 +73,27 @@ class Theme < ActiveRecord::Base
 
     def build_random_color
       build_with_defaults.tap do |theme|
-        theme.bg_color_top = '#' + (1..3).map { (rand(128) + 128).to_s(16) }.join
+        # fairly light and hue <= 220 (no purple or pink)
+        color = random_sass_hsl_color(rand(1..220), rand(20..60), rand(50..90))
+        theme.bg_color_top = color.to_s
         theme.bg_class     = 'light'
         theme.box_pos      = VALID_BOX_POSITIONS.sample
       end
     end
 
+    def random_sass_hsl_color(h, s, l)
+      context = Sass::Script::Functions::EvaluationContext.new({})
+      context.hsl(
+        Sass::Script::Number.new(h),
+        Sass::Script::Number.new(s),
+        Sass::Script::Number.new(l)
+      ).tap do |color|
+        color.options = {}
+      end
+    end
+
     def build_from_image_info(info)
-      build_with_defaults.tap do |theme|
+      build_with_defaults(info['class']).tap do |theme|
         theme.bg_image = info
         theme.box_pos  = info['box_pos']
       end

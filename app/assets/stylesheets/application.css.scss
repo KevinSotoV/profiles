@@ -4,6 +4,7 @@
 @import "compass/css3/border-radius";
 @import "compass/css3/opacity";
 @import "compass/css3/box-shadow";
+@import "compass/css3/images";
 
 $default-box-shadow-color: rgba(0, 0, 0, 0.25);
 $default-box-shadow-v-offset: 4px;
@@ -43,6 +44,24 @@ html,body{background:none;}
 
 .actions .right {
   float: right;
+}
+
+/* Columns - - - - - - - -*/
+
+.col-span {
+  display: inline;
+  float: left;
+  margin-left: 20px;
+}
+
+.profile-col {
+  @extend .span6;
+  @extend .col-span;
+}
+
+.aux-col {
+  @extend .span10;
+  @extend .col-span;
 }
 
 /* Layout - - - - - - - - -*/
@@ -133,39 +152,50 @@ html,body{background:none;}
 
 #profile-box {
   @include border-radius(5px);
+  @include single-box-shadow;
   position: relative;
   z-index: 100;
   .content {
     padding: 15px;
-    overflow: auto;
   }
   .controls {
-    padding: 10px 15px 0 0;
     float: right;
-    .btn {
-      background: #333;
-      border: 1px solid #777;
-      padding: 2px 5px;
-      &:hover {
-        background: #fff;
-      }
-      span {
-        padding-left: 12px;
-        display: inline-block;
-        height: 20px;
-      }
-    }
+    padding: 15px;
   }
   .name {
-    background-color: rgba(0, 0, 0, 0.4);
     @include border-top-radius(5px);
     padding: 5px 15px;
   }
   .pic {
-    margin-left: 15px;
-    float: right;
+    float: left;
+    margin: 0 15px 15px 0;
     img {
+      display: block;
       width: 120px;
+    }
+  }
+  .member-since {
+    margin-bottom: 15px;
+  }
+  .links {
+    margin-bottom: 10px;
+  }
+  .link {
+    display: inline-block;
+    margin: 0;
+    overflow: hidden;
+    white-space: nowrap;
+    @include background(linear-gradient(top, #ccc, #999));
+    @include border-radius(5px);
+    border: 2px solid #676767;
+    &:hover {
+      @include background(linear-gradient(top, #fff, #ccc));
+    }
+    a {
+      display: block;
+      width: 28px;
+      height: 28px;
+      text-decoration: none;
     }
   }
   .headline {
@@ -175,32 +205,20 @@ html,body{background:none;}
     margin: 10px 0;
   }
   .map {
-    clear: right;
     margin-top: 20px;
-    width: 370px;
+    width: 310px;
     height: 150px;
+  }
+  .clear {
+    clear: left;
+    &:after {
+      content: " ";
+    }
   }
 }
 
 .my-profile-pic:hover {
   @include opacity(0.5);
-}
-
-.links {
-  a {
-    display: inline-block;
-    @include border-radius(5px);
-    color: #555;
-    height: 18px;
-    padding: 5px 10px 5px 37px;
-    margin: 0 5px 5px 0;
-    max-width: 185px;
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-    text-decoration: none;
-    background-color: #eee;
-  }
 }
 
 #aux {
@@ -210,13 +228,6 @@ html,body{background:none;}
     border: none;
     padding: 15px;
     margin-bottom: 25px;
-    .simple_form {
-      legend { padding-left: 90px; }
-      label { width: 70px; }
-      .input label { width: auto; }
-      .actions { padding-left: 90px; }
-      .input, .hint { margin-left: 90px; }
-    }
   }
   .status {
     margin-top: 15px;
@@ -341,7 +352,6 @@ form.message {
 
 @mixin icon-sprite($pos) {
   $y: ($pos - 1) * -28px;
-  padding-left: 15px;
   background-image: url(/assets/icons.png);
   background-position: 0 $y;
   background-repeat: no-repeat;
@@ -350,8 +360,8 @@ form.message {
 .fb-icon    { @include icon-sprite(1) }
 .phone-icon { @include icon-sprite(2) }
 .bday-icon  { @include icon-sprite(3) }
-.edit-icon  { @include icon-sprite(4) }
-.email-icon { @include icon-sprite(5) }
+.email-icon { @include icon-sprite(4) }
+.edit-icon  { @include icon-sprite(5) }
 
 /* Mobile - - - - - - - - - */
 

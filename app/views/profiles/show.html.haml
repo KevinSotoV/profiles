@@ -4,11 +4,11 @@
   - layout_order(@profile.theme).each do |part|
     -# align profile-box on left or right depending on theme selection...
     - if 'profile-box' == part
-      .span7.columns
-        #profile-box{:class => @profile.theme.box_pos}
-          = render :partial => 'profiles/box'
+      .profile-col
+        = render :partial => 'profiles/box'
     - if 'alerts' == part
       .span9.columns
+      .aux-col
         #aux
           = yield(:aux)
         #alerts
