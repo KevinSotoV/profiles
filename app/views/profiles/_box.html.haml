@@ -17,12 +17,12 @@
 
     .links
       - if @profile.facebook_url
-        .link= link_to '', @profile.facebook_url, :class => 'fb-icon', :rel => 'popover', :title => t('profile.links.facebook'), 'data-content' => @profile.facebook_url
+        .link= link_to '', @profile.facebook_url, :class => 'fb-icon', :rel => 'tip', :title => simple_url(@profile.facebook_url)
       - if @profile.phone
-        .link= link_to '', "tel:#{@profile.phone}", :class => 'phone-icon', :rel => 'popover', :title => t('profile.links.phone'), 'data-content' => @profile.phone
-      .link= link_to '', new_profile_message_url(@profile), 'data-pjax' => '#aux', :class => 'email-icon', :rel => 'popover', :title => t('profile.links.message')
+        .link= link_to '', "tel:#{@profile.phone}", :class => 'phone-icon', :rel => 'tip', :title => @profile.phone
+      .link= link_to '', new_profile_message_url(@profile), 'data-pjax' => '#aux', :class => 'email-icon', :rel => 'tip', :title => t('profile.links.message')
       - if @profile.birthday
-        .link= link_to '', event_url(@profile.next_birthday, t('profile.birthday', :name => @profile.name)), :class => 'bday-icon', :target => '_blank', :rel => 'popover', :title => t('profile.links.birthday'), 'data-content' => l(@profile.next_birthday, :format => :birthday)
+        .link= link_to '', event_url(@profile.next_birthday, t('profile.birthday', :name => @profile.name)), :class => 'bday-icon', :target => '_blank', :rel => 'tip', :title => l(@profile.next_birthday, :format => :birthday)
 
     .clear
 

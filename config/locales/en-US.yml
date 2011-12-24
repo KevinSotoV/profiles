@@ -183,10 +183,7 @@ en-US:
           color: Color
     friends: Friends
     links:
-      facebook: Facebook Profile
-      phone: Phone Number
       message: Send Message
-      birthday: Birthday
     member_since: "Member Since: %{year}"
     pic_alt:
       facebook: Log into Facebook.com to change your profile picture.

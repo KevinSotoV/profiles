@@ -4,6 +4,6 @@ $('#search-form').live 'submit', (e)->
     container: '#aux'
     url: @action + '?' + $(@).serialize()
 
-$("a[rel=popover]").popover
+$("a[rel=tip]").twipsy
   offset: 10
   placement: 'below'
