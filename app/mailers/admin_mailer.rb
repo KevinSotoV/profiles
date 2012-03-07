@@ -14,6 +14,7 @@ class AdminMailer < ActionMailer::Base
   end
 
   def self.new_profile_notifications
+    return unless SMTP_OK
     User.with_notifications(:new_profile).each do |admin|
       AdminMailer.new_profile(admin).deliver
     end
