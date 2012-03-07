@@ -1,24 +1,31 @@
 //= require jquery_ui
 
-@import "bootstrap";
+@import "foundation";
 @import "compass/css3/border-radius";
 @import "compass/css3/opacity";
 @import "compass/css3/box-shadow";
 @import "compass/css3/images";
+@import "compass/css3/transition";
 
 $default-box-shadow-color: rgba(0, 0, 0, 0.25);
 $default-box-shadow-v-offset: 4px;
 
-/* Generic - - - - - - - - */
+$theme-primary:   #A0CAB5;
+$theme-secondary: #F38A8A;
+$theme-shadow:    #55443D;
+$theme-bg:        #F1EDD0;
 
-body {
-  color: #333;
-}
+/* Generic - - - - - - - - */
 
 // override bootstrap weirdness
 html,body{background:none;}
 .inputs-list input[type=radio],.inputs-list input[type=checkbox]{margin-bottom:0;margin-left:0;float:none;}
 .inputs-list li.inline label { display: inline; margin-left: 0 }
+
+body {
+  background-color: $theme-bg;
+  color: #333;
+}
 
 .alert-message.block-message {
   h2 {
@@ -46,6 +53,22 @@ html,body{background:none;}
   float: right;
 }
 
+ul.icons {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  li {
+    display: inline-block;
+    margin: 0;
+    padding: 0;
+    a {
+      display: block;
+      width: 42px;
+      height: 42px;
+    }
+  }
+}
+
 /* Columns - - - - - - - -*/
 
 .col-span {
@@ -66,171 +89,126 @@ html,body{background:none;}
 
 /* Layout - - - - - - - - -*/
 
-#main {
-  padding-top: 40px;
-  min-height: 600px;
-}
-
-#footer {
-  margin: 25px auto 0 auto;
-  .content {
-    text-align: center;
-    padding: 3px 10px;
-  }
-}
-
-.generic {
-  #main .container {
-    margin-top: 25px;
-  }
-}
-
-.profile {
-  #main .container {
-    margin-top: 35px;
-  }
-
-  #footer {
-    position: fixed;
-    left: 0;
-    margin: 0;
-    bottom: 0;
-    background-color: rgba(8, 8, 8, 0.5);
-    color: #fff;
-    text-align: left;
-    @include border-top-right-radius(5px);
-    .content a {
-      color: #fff;
-      text-decoration: underline;
+nav {
+  background-color: $theme-shadow;
+  padding: 0;
+  ul {
+    margin: 5px 0;
+    padding: 0;
+    list-style: none;
+    li {
+      display: inline-block;
+      padding: 2px;
+      margin: 0 10px 0 0;
+      a {
+        color: #777;
+        @extend .small;
+        @extend .radius;
+        @extend .button;
+        @include background(linear-gradient(top, #eee, #ddd));
+        @include single-transition(all, 0.2s, ease-in-out);
+      }
+      &.active a, & a:hover {
+        color: #fff;
+        @include background(linear-gradient(top, $theme-secondary, $theme-secondary - 40));
+      }
     }
   }
 }
 
 #search-form {
-  float: right;
   input {
-    width: 275px;
+    @include border-radius;
+    border: 1px solid #372c28;
   }
+  margin: 0;
+  padding: 3px;
 }
 
-.sidebar {
-  border-left: 1px solid #ccc;
-  padding-left: 20px;
+#main {
+  margin-top: 40px;
+}
+
+footer {
+  margin-top: 50px;
+  color: #777;
+  a, a:hover {
+    color: $theme-shadow;
+  }
+  .main {
+    @extend .offset1;
+  }
 }
 
 /* Home Screen - - - - - - */
 
-#home-container {
-  background-color: #eee;
-  #home-image {
-    min-height: 528px;
-    background: #fff url(/assets/tree.jpg) top center no-repeat;
-    #welcome {
-      margin-top: 80px;
-      h2 {
-        margin-bottom: 25px;
-      }
-      .login-buttons {
-        margin-top: 25px;
-        line-height: 2em;
-      }
-    }
+#home {
+  font-family: Bitter, Helvetica, Arial, sans-serif;
+  color: #999;
+  h2 {
+    font-size: 38pt;
+    color: #999;
+    font-weight: normal;
+    margin-bottom: 20px;
   }
-}
-
-.home-text {
-  @extend .span5;
-  @extend .offset11;
-  @extend .columns;
+  p {
+    font-size: 18pt;
+  }
+  .community {
+    color: $theme-secondary;
+  }
 }
 
 /* Profile - - - - - - - - */
 
-.headline {
-  font-style: italic;
-}
-
-#profile-box {
-  @include border-radius(5px);
-  @include single-box-shadow;
-  position: relative;
-  z-index: 100;
-  .content {
-    padding: 15px;
-  }
-  .controls {
-    float: right;
-    padding: 15px;
-  }
-  .name {
-    @include border-top-radius(5px);
-    padding: 5px 15px;
-  }
-  .pic {
-    float: left;
-    margin: 0 15px 15px 0;
-    img {
-      display: block;
-      width: 120px;
-    }
-  }
-  .member-since {
-    margin-bottom: 15px;
-  }
-  .links {
-    margin-bottom: 10px;
-  }
-  .link {
-    display: inline-block;
-    margin: 0;
-    overflow: hidden;
-    white-space: nowrap;
-    @include background(linear-gradient(top, #ccc, #999));
-    @include border-radius(5px);
-    border: 2px solid #676767;
+#profile {
+  a {
+    color: #95bca9;
     &:hover {
-      @include background(linear-gradient(top, #fff, #ccc));
-    }
-    a {
-      display: block;
-      width: 28px;
-      height: 28px;
-      text-decoration: none;
+      color: #789787;
     }
   }
-  .headline {
-    margin-bottom: 10px;
+  .icons {
+    padding-left: 20px;
+    li {
+      margin: 0 15px 15px 0;
+    }
   }
-  .bio {
-    margin: 10px 0;
+  .pic img {
+    @include single-box-shadow;
+    margin-bottom: 20px;
   }
-  .map {
-    margin-top: 20px;
-    width: 310px;
-    height: 150px;
-  }
-  .clear {
-    clear: left;
-    &:after {
-      content: " ";
+  .roles {
+    margin: 35px 0;
+    border-top: 3px solid $theme-primary;
+    padding-top: 35px;
+    ul {
+      list-style: none;
+      margin: 0;
+      li {
+        font-size: 22pt;
+        line-height: 1.2em;
+        margin-bottom: 10px;
+        svg {
+          margin-right: 5px;
+        }
+      }
     }
   }
 }
 
-.my-profile-pic:hover {
-  @include opacity(0.5);
-}
-
-#aux {
-  .content {
-    @include border-radius(5px);
-    background-color: rgba(255, 255, 255, 0.95);
-    border: none;
-    padding: 15px;
-    margin-bottom: 25px;
+.hero {
+  font-family: Bitter, Helvetica, Arial, sans-serif;
+  font-size: 32pt;
+  color: #999;
+  line-height: 1.3em;
+  .name {
+    color: #555;
   }
-  .status {
-    margin-top: 15px;
+  .location {
+  }
+  .community {
+    color: $theme-secondary;
   }
 }
 
@@ -252,45 +230,6 @@ html,body{background:none;}
   .empty {
     font-style: italic;
   }
-}
-
-/* Theme - - - - - - - - - */
-
-.bg-selector {
-  height: 250px;
-  overflow-x: hidden;
-  overflow-y: scroll;
-  .bg {
-    clear: left;
-    margin-bottom: 10px;
-    .img {
-      width: 200px;
-      height: 113px;
-      float: left;
-      cursor: pointer;
-      border: 4px solid #fff;
-      margin: 0 5px 5px 0;
-      &.selected {
-        border-color: #0069D6;
-      }
-    }
-    .details {
-      padding-top: 5px;
-      margin-left: 210px;
-      .name {
-        font-weight: bold;
-        margin-bottom: 5px;
-      }
-      .description, .credit, .license {
-        font-size: smaller;
-        margin-bottom: 5px;
-      }
-    }
-  }
-}
-
-.color {
-  width: 70px;
 }
 
 /* Forms - - - - - - - - - */
@@ -333,11 +272,6 @@ html,body{background:none;}
   }
 }
 
-#profile_bio {
-  width: 380px;
-  height: 150px;
-}
-
 form.message {
   input[type=text] {
     width: 380px;
@@ -345,34 +279,5 @@ form.message {
   textarea {
     width: 380px;
     height: 250px;
-  }
-}
-
-/* Icons - - - - - - - - - */
-
-@mixin icon-sprite($pos) {
-  $y: ($pos - 1) * -28px;
-  background-image: url(/assets/icons.png);
-  background-position: 0 $y;
-  background-repeat: no-repeat;
-}
-
-.fb-icon    { @include icon-sprite(1) }
-.phone-icon { @include icon-sprite(2) }
-.bday-icon  { @include icon-sprite(3) }
-.email-icon { @include icon-sprite(4) }
-.edit-icon  { @include icon-sprite(5) }
-
-/* Mobile - - - - - - - - - */
-
-@media only screen and (max-width:940px) {
-  .container {
-    width: auto;
-  }
-  #home-container #home-image {
-    background-position: top right;
-  }
-  .row > .home-text {
-    margin: 0 0 0 auto;
   }
 }

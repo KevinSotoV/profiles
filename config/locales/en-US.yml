@@ -98,8 +98,8 @@ en-US:
     welcome_html:
       <h2>Welcome to our community.</h2>
       <p>
-        This site is meant to help members of %{community_name} communicate
-        and connect with one another easily.
+        This site is meant to help members of <span class="community">%{community_name}</span>
+        communicate and connect with one another easily.
       </p>
       <p>
         If you're wanting more information about us, be sure to take a look at our
@@ -147,6 +147,10 @@ en-US:
       edit_button: Let me make my own...
     attributes:
       phone: 
+    bio:
+      gender:
+        m: male
+        f: female
     birthday: Birthday of %{name}
     default_headline: Christ Follower
     edit_button: Edit Profile
@@ -182,7 +186,8 @@ en-US:
           color: Color
     friends: Friends
     links:
-      message: Send Message
+      message: "Send a message to %{name}"
+      phone: "Call %{name}"
     member_since: "Member Since: %{year}"
     pic_alt:
       facebook: Log into Facebook.com to change your profile picture.

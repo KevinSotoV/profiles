@@ -1,18 +1,17 @@
 - @title = t('search.results.title')
 
-= profile_view do
-  #search-results
-    %h2= t('search.results.heading')
-    - @search.profiles.each do |profile|
-      .profile
-        = link_to profile do
-          = profile_pic_tag(profile, :tn)
-          .name= profile.name
-          .headline= profile.headline
-        %br{:clear => 'left'}
-    - if @search.profiles.empty?
-      .empty
-        = t('search.results.none')
-    - unless @search.user.active?
-      .alert-message.block-message.warning
-        = t('search.results.account_limited_warning_html')
+#search-results
+  %h2= t('search.results.heading')
+  - @search.profiles.each do |profile|
+    .profile
+      = link_to profile do
+        = profile_pic_tag(profile, :tn)
+        .name= profile.name
+        .headline= profile.headline
+      %br{:clear => 'left'}
+  - if @search.profiles.empty?
+    .empty
+      = t('search.results.none')
+  - unless @search.user.active?
+    .alert-message.block-message.warning
+      = t('search.results.account_limited_warning_html')

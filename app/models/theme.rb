@@ -57,7 +57,7 @@ class Theme < ActiveRecord::Base
         :headline_font_style  => 'italic',
         :headline_size        => 16,
         :headline_color       => '#fff',
-        :bio_font_family      => 'Ubuntu',
+        :bio_font_family      => 'Cutive',
         :bio_size             => 12,
         :bio_color            => '#fff'
       )

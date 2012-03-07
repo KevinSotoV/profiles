@@ -1,24 +1,32 @@
 - @title ||= @profile.name
 
-.row
-  - layout_order(@profile.theme).each do |part|
-    -# align profile-box on left or right depending on theme selection...
-    - if 'profile-box' == part
-      .profile-col
-        = render :partial => 'profiles/box'
-    - if 'alerts' == part
-      .span9.columns
-      .aux-col
-        #aux
-          = yield(:aux)
-        #alerts
-          = profile_alerts
-          / don't collapse
-          &nbsp;
+#profile
+  .row.hero
+    .one.column
+      %ul.icons
+        %li
+          %a.edit-icon.has-tooltip{:href => edit_profile_path(@profile), :title => t('profile.edit_button')}
+        %li
+          %a.email-icon.has-tooltip{:href => '#', :title => t('profile.links.message', :name => @profile.name)}
+        %li
+          %a.phone-icon.has-tooltip{:href => '#', :title => t('profile.links.phone', :name => @profile.name)}
+    .eleven.columns
+      = profile_pic_tag(@profile)
+      %span.name= @profile.name
+      is a
+      %span.gender= t(@profile.gender, :scope => 'profile.bio.gender')
+      %br.hide-on-phones
+      living in
+      %a.location{:href => '#'}= @profile.location
+      %br.hide-on-phones
+      and a valuable part of
+      %span.community= s('community.name')
+
+      .roles
+        %ul
+          %li.role-icon helps with the Technology Ministry
+          %li.role-icon teaches Sunday School
 
 = javascript_include_tag 'http://maps.googleapis.com/maps/api/js?sensor=false'
 = javascript_include_tag 'map'
-
-= theme_markup @profile.theme
-
 = javascript_include_tag 'profile'

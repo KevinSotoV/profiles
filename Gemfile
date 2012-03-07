@@ -24,7 +24,7 @@ group :assets do
   gem 'coffee-rails', '~> 3.1.1'
   gem 'uglifier', '>= 1.0.3'
   gem 'compass', '>= 0.12.alpha'
-  gem 'bootstrap-sass'
+  gem 'zurb-foundation'
 end
 
 group :development do

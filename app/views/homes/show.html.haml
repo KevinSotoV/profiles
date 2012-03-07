@@ -1,6 +1,6 @@
-#home-container
-  #home-image
-    .row
-      .home-text
-        #welcome
-          = t('home.welcome_html', :main_site_url => s('community.main_site_url'), community_name: s('community.name'), :fb_login_url => user_omniauth_authorize_path(:facebook), :login_url => new_user_session_path)
+#home
+  .row
+    .two.columns.offset-by-one
+      = logo_image_tag
+    .nine.columns
+      = t('home.welcome_html', main_site_url: s('community.main_site_url'), community_name: s('community.name'), fb_login_url: user_omniauth_authorize_path(:facebook), :login_url => new_user_session_path)

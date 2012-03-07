@@ -103,4 +103,8 @@ module ApplicationHelper
   def check_box_field(label, name, value, checked)
     check_box_fields(label, [{:name => name, :value => value, :checked => checked}])
   end
+
+  def font_include_tag(*fonts)
+    content_tag(:link, '', :href => "http://fonts.googleapis.com/css?family=#{fonts.join('|').sub(/\s/, '+')}", :rel => 'stylesheet', :type => 'text/css')
+  end
 end

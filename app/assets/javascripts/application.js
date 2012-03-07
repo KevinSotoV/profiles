@@ -8,8 +8,8 @@
 //= require jquery_ui
 //= require jquery_ujs
 //= require jquery.pjax
-//= require bootstrap-tabs
-//= require bootstrap-twipsy
+//= require raphael
+//= require foundation
 //= require controls
 //= require forms
 //= require theme
