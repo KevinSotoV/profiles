@@ -33,19 +33,6 @@ module ApplicationHelper
     url.to_s.sub(/^https?:\/\/(www\.)?/, '')
   end
 
-  def body_class
-    [].tap do |classes|
-      if @profile && @profile.theme
-        classes << 'profile'
-        classes << @profile.theme.bg_class if @profile.theme
-      elsif request.path == '/'
-        classes << 'home'
-      else
-        classes << 'generic'
-      end
-    end.join(' ')
-  end
-
   def close_button
     link_to '&#215;'.html_safe, '#', :class => 'close' 
   end

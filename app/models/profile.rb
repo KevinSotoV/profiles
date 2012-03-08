@@ -14,12 +14,9 @@ class Profile < ActiveRecord::Base
   has_many :friendships, :dependent => :destroy
   has_many :friends, :through => :friendships
   has_many :messages
-  has_one :theme, :order => 'id', :dependent => :destroy
 
   scope :visible, where(:workflow_state => 'visible')
   scope :visible_or_user, lambda { |user| where('workflow_state = ? or user_id = ?', 'visible', user) }
-
-  accepts_nested_attributes_for :theme
 
   validates_presence_of :name
   validates_length_of :name, :maximum => 255
@@ -30,7 +27,7 @@ class Profile < ActiveRecord::Base
   validates_presence_of :user_id
   validates_uniqueness_of :user_id
 
-  attr_accessible :name, :headline, :bio, :gender, :birthday, :member_since, :location, :phone, :facebook_id, :facebook_url, :small_image_url, :full_image_url, :theme_attributes, :alerts
+  attr_accessible :name, :headline, :bio, :gender, :birthday, :member_since, :location, :phone, :facebook_id, :facebook_url, :small_image_url, :full_image_url, :alerts
 
   delegate :email, :to => :user
 
@@ -45,16 +42,8 @@ class Profile < ActiveRecord::Base
   end
 
   # alerts
-  bitmask :alerts, :as => [:new, :new_theme]
+  bitmask :alerts, :as => [:new]
   before_create { alerts << :new }
-  def new_theme_alert!(a=true)
-    if a
-      alerts << :new_theme
-    else
-      alerts.delete(:new_theme)
-    end
-    save(:validate => false)
-  end
 
   # FIXME this is hacky
   def gender=(g)
@@ -89,14 +78,6 @@ class Profile < ActiveRecord::Base
       'profiles.workflow_state' => 'visible'
     ).map(&:profile)
     self.friends = profiles
-  end
-
-  def create_theme_if_missing!
-    return if new_record? || theme
-    theme = Theme.build_random
-    theme.profile = self
-    theme.save!
-    reload
   end
 
   def next_birthday

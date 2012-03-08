@@ -20,14 +20,6 @@ en-US:
         birthday: Birthday
         phone: Phone
         bio: Bio
-      theme:
-        bio_color: Bio Color
-        bg_color_top: BG Color
-        box_bg_color: Box Color
-        box_bg_opacity: Box Opacity
-        box_pos: Box Position
-        headline_color: Headline Color
-        name_color: Name Color
       user:
         admin: Admin
         current_password: Current Password
@@ -140,11 +132,6 @@ en-US:
       heading: Welcome!
       body_html: <strong>Your profile has been created.</strong> Now would be a great time to edit your profile and add other information you want people to know about you.
       edit_profile_button: Edit your profile...
-    alert_new_theme:
-      heading: Your Profile Design
-      body_html: <strong>We've selected a profile design for you.</strong> You can select a different random design or make your own...
-      new_button: Another design please!
-      edit_button: Let me make my own...
     attributes:
       phone: 
     bio:
@@ -162,7 +149,6 @@ en-US:
           new_profile: Send email for new profiles.
       bio_hint_html: Describe yourself in a few sentences. Some HTML allowed.<br/>(<span id="profile_bio_count_remaining">%{count}</span> characters left.)
       cancel: Cancel
-      confirm_reset: Are you sure you want to delete your theme design and create a new, random one?
       heading: Profile Details
       gender_selection:
         m: Male
@@ -174,16 +160,6 @@ en-US:
       tabs:
         admin: Admin
         profile: Profile
-        theme: Theme
-      theme:
-        background: Background
-        box_pos:
-          left: Left
-          right: Right
-        tabs:
-          scaled: Scaled
-          tiled: Tiled
-          color: Color
     friends: Friends
     links:
       message: "Send a message to %{name}"
@@ -193,9 +169,7 @@ en-US:
       facebook: Log into Facebook.com to change your profile picture.
       gravatar: Log into Gravatar.com to change your profile picture.
     send_message: Send Message
-    theme:
-      bg_image_byline_html: "%{name} by %{byline}"
-  
+
   registration:
     create_profile_message: Please create your profile in order to continue.
     forgot_password_heading: Forgot your password?

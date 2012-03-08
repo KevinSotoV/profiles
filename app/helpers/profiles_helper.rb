@@ -36,13 +36,6 @@ module ProfilesHelper
     end
   end
 
-  def layout_order(theme)
-    {
-      :left  => ['profile-box', 'alerts'],
-      :right => ['alerts', 'profile-box']
-    }[theme.box_pos.to_sym]
-  end
-
   def alert_block(alert_class, content, actions, options={})
     options.reverse_merge!(:close => true)
     content_tag(:div, :class => "alert-message block-message #{alert_class}", :id => content) do
@@ -61,11 +54,6 @@ module ProfilesHelper
       if @profile.alerts?(:new)
         alerts << alert_block(:success, :new, [
                     link_to(t('profile.alert_new.edit_profile_button'), edit_profile_path(@profile), :class => 'btn small')])
-      end
-      if @profile.alerts?(:new_theme)
-        alerts << alert_block(:info, :new_theme, [
-                    link_to(t('profile.alert_new_theme.new_button'), profile_theme_path(@profile), :method => :delete, :class => 'btn small'),
-                    link_to(t('profile.alert_new_theme.edit_button'), edit_profile_path(@profile, :tab => 'theme'), :class => 'btn small')])
       end
     end.join("\n").html_safe
   end

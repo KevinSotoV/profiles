@@ -13,7 +13,6 @@ Profiles::Application.routes.draw do
   resources :profiles do
     resources :messages
     resources :alerts
-    resource :theme
   end
 
   resource :search

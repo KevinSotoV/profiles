@@ -12,4 +12,3 @@
 //= require foundation
 //= require controls
 //= require forms
-//= require theme
