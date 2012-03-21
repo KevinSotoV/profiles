@@ -1,31 +1,34 @@
 - @title ||= @profile.name
 
-#profile
-  .row.hero
-    .one.column
-      %ul.icons
-        %li
-          %a.edit-icon.has-tooltip{:href => edit_profile_path(@profile), :title => t('profile.edit_button')}
-        %li
-          %a.email-icon.has-tooltip{:href => '#', :title => t('profile.links.message', :name => @profile.name)}
-        %li
-          %a.phone-icon.has-tooltip{:href => '#', :title => t('profile.links.phone', :name => @profile.name)}
-    .eleven.columns
-      = profile_pic_tag(@profile)
-      %span.name= @profile.name
-      is a
-      %span.gender= t(@profile.gender, :scope => 'profile.bio.gender')
-      %br.hide-on-phones
-      living in
-      %a.location{:href => '#'}= @profile.location
-      %br.hide-on-phones
-      and a valuable part of
-      %span.community= s('community.name')
+- content_for :meta do
+  %ul.icons
+    %li
+      %a.edit-icon{:href => edit_profile_path(@profile), :title => t('profile.edit_button')}
+    %li
+      %a.email-icon{:href => '#', :title => t('profile.links.message', :name => @profile.name)}
+    %li
+      %a.phone-icon{:href => '#', :title => t('profile.links.phone', :name => @profile.name)}
 
-      .roles
-        %ul
-          %li.role-icon helps with the Technology Ministry
-          %li.role-icon teaches Sunday School
+#profile
+  = profile_pic_tag(@profile)
+  %span.name= @profile.name
+  %br.hide-on-phones
+  - if @profile.location.present?
+    lives in
+    %a.location{:href => '#'}= @profile.location
+    %br.hide-on-phones
+  and is a valuable part of
+  %span.community= s('community.name')
+
+  - if @profile.roles.any?
+    .roles
+      %ul
+        - @profile.roles.each do |role|
+          %li.role-icon
+            - if role.name.present?
+              = t('profile.roles.specific_html', :role_name => role.name, :group_name => role.group.name, :group_url => url_for(role.group))
+            - else
+              = t('profile.roles.non_specific_html', :group_name => role.group.name, :group_url => url_for(role.group))
 
 = javascript_include_tag 'http://maps.googleapis.com/maps/api/js?sensor=false'
 = javascript_include_tag 'map'

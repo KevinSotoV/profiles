@@ -1,6 +1,5 @@
-#home
-  .row
-    .two.columns.offset-by-one
-      = logo_image_tag
-    .nine.columns
-      = t('home.welcome_html', main_site_url: s('community.main_site_url'), community_name: s('community.name'), fb_login_url: user_omniauth_authorize_path(:facebook), :login_url => new_user_session_path)
+%h2= t('home.heading_html')
+
+= t('home.body_html', main_site_url: s('community.main_site_url'), community_name: s('community.name'), fb_login_url: user_omniauth_authorize_path(:facebook), :login_url => new_user_session_path)
+
+= footer_content

@@ -1,8 +1,35 @@
 module ApplicationHelper
+  extend ActiveSupport::Memoizable
+
+  def logo_image_tag
+    logo = File.exist?(Rails.root.join('app/assets/images/logo.png')) ? 'logo.png' : 'logo.default.png'
+    image_tag(logo, :alt => s('community.name'))
+  end
+  memoize :logo_image_tag
+
+  def bg_style_tag
+    path = File.exist?(Rails.root.join('app/assets/images/bg.jpg')) ? 'bg.jpg' : 'bg.default.jpg'
+    style = ".bg { background: url(/assets/#{path}) top left no-repeat; background-size: cover; }"
+    content_tag(:style, style, :type => 'text/css').html_safe
+  end
+
+  def footer_content
+    content_tag(:footer) do
+      I18n.t('footer.copyright_html', :year => Date.today.year, :name => Setting.s('community.name')).html_safe +
+      ' &middot; '.html_safe +
+      link_to(I18n.t('pages.privacy_policy'), '/pages/privacy_policy') +
+      ' &middot; '.html_safe +
+      I18n.t('app.powered_by_html').html_safe +
+      if home? && credit = s('home.bg_credit')
+        "<br/> #{h credit}"
+      end.to_s.html_safe
+    end
+  end
+
   def flash_messages
     [:info, :success, :warning, :error, :alert, :notice].map do |type|
       if flash[type]
-        content_tag(:div, :class => "alert-message #{type}") do
+        content_tag(:div, :class => "alert-box #{type}") do
           close_button + content_tag(:p, h(flash[type]))
         end
       end

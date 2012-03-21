@@ -15,6 +15,8 @@ Profiles::Application.routes.draw do
     resources :alerts
   end
 
+  resources :groups
+
   resource :search
   resource :home
 

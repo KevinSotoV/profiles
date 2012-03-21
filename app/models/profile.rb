@@ -14,6 +14,8 @@ class Profile < ActiveRecord::Base
   has_many :friendships, :dependent => :destroy
   has_many :friends, :through => :friendships
   has_many :messages
+  has_many :roles
+  has_many :groups, :through => :roles
 
   scope :visible, where(:workflow_state => 'visible')
   scope :visible_or_user, lambda { |user| where('workflow_state = ? or user_id = ?', 'visible', user) }

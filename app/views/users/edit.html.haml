@@ -1,6 +1,6 @@
 %h2= @title = t('account.edit_form.heading')
 
-= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |form|
+= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put, :class => 'nice' }) do |form|
   %p= t('account.edit_form.intro')
   = form.input :email, :required => true
   = form.input :timezone, :as => :time_zone
