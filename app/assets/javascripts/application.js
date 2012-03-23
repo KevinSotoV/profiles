@@ -11,5 +11,6 @@
 //= require raphael
 //= require foundation
 //= require controls
+//= require icons
 //= require forms
 //= require layout

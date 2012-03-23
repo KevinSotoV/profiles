@@ -9,7 +9,7 @@ module ApplicationHelper
 
   def bg_style_tag
     path = File.exist?(Rails.root.join('app/assets/images/bg.jpg')) ? 'bg.jpg' : 'bg.default.jpg'
-    style = ".bg { background: url(/assets/#{path}) top left no-repeat; background-size: cover; }"
+    style = ".bg { background-image: url(/assets/#{path}); }"
     content_tag(:style, style, :type => 'text/css').html_safe
   end
 

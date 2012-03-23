@@ -12,7 +12,7 @@
     = bg_style_tag
     = yield(:head)
 
-  %body.bg
+  %body{:class => home? && 'bg'}
 
     - if home?
       .container
@@ -26,28 +26,28 @@
       %header
         .container
           .row
-            .offset-by-one
-              %nav
+            .offset-by-one.eleven.columns
+              %nav.fixed
                 %ul
-                  -#%a{:href => '/'}= s('site.name')
+                  %li.right.icon
+                    - if current_user
+                      = link_to '', destroy_user_session_path, :method => :delete, :class => 'door-icon small', :title => t('nav.log_out')
+                  %li.right.icon
+                    - if current_user && current_user.roles?(:admin)
+                      %a.gear-icon.small{:href => admin_dashboard_path, :title => t('nav.admin')}
+                  %li.right.on-mobile
+                    = form_tag '/search', :method => :get, :id => 'search' do
+                      = text_field_tag :q, nil, :placeholder => t('nav.search_placeholder'), :id => 'search-query'
+                  %li{:class => params[:controller] == 'homes' ? 'on-mobile active' : 'on-mobile'}
+                    = link_to t('nav.home'), root_path, :class => 'btn'
                   - if current_user
                     %li{:class => params[:controller] == 'profiles' && @profile && @profile.user == current_user && 'active'}
-                      = link_to t('nav.profile'), my_profile_path
-                    %li{:class => params[:controller] == 'users' && 'active'}
-                      = link_to t('nav.account'), edit_user_registration_path
-                    - if current_user.roles?(:admin)
-                      %li{:class => params[:controller] =~ /^admin/ && 'active'}
-                        = link_to t('nav.admin'), admin_dashboard_path
-                    %li
-                      = link_to t('nav.log_out'), destroy_user_session_path, :method => :delete
-                    -#%li
-                      -#%form{:action => search_path, :method => :get, :id => 'search-form'}
-                        -#= text_field_tag :q, params[:q], :placeholder => t('nav.search_placeholder')
+                      = link_to t('nav.profile'), my_profile_path, :class => 'btn'
+                    %li{:class => params[:controller] == 'groups' && 'active'}
+                      = link_to t('nav.groups'), groups_path, :class => 'btn'
                   - else
-                    %li{:class => params[:controller] == 'homes' && 'active'}
-                      = link_to t('nav.home'), root_path
                     %li
-                      = link_to t('nav.log_in'), new_user_session_path
+                      = link_to t('nav.log_in'), new_user_session_path, :class => 'btn'
       #main
         .container
           .row
@@ -57,7 +57,3 @@
               .row
                 #messages= flash_messages
                 = yield
-
-    - unless home?
-      :javascript
-        setupScroll()

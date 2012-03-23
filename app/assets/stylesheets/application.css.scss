@@ -12,11 +12,6 @@
 $default-box-shadow-color: rgba(0, 0, 0, 0.25);
 $default-box-shadow-v-offset: 4px;
 
-// http://www.colourlovers.com/palette/234090/%5BCHIC%5D_Dreamer
-/*$theme-primary:        #A0CAB5;*/
-/*$theme-secondary:      #F38A8A;*/
-/*$theme-shadow:         #55443D;*/
-/*$theme-bg:             #F1EDD0;*/
 // http://www.colourlovers.com/palette/128162/Mais
 $theme-primary:        #33AABB;
 $theme-secondary:      #CC4433;
@@ -31,6 +26,7 @@ html, body {
 
 body {
   color: #333;
+  background-color: $theme-bg;
 }
 
 .alert-box {
@@ -67,6 +63,15 @@ ul.icons {
   }
 }
 
+/* Full-Screen BG Image- - */
+
+.bg {
+  @include background-size(cover);
+  background-position: top left;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+}
+
 /* Layout - - - - - - - - -*/
 
 .meta {
@@ -79,14 +84,19 @@ ul.icons {
   @extend .columns;
 }
 
+#main {
+  padding-top: 40px;
+  @include single-box-shadow(rgba(#000, 0.2), 0, -10px, 15px);
+}
+
+/* Header and Nav- - - - - */
+
 header {
-  height: 500px;
-  position: relative;
+  @include background(linear-gradient(top, $theme-shadow, $theme-shadow - 15));
+  padding: 25px 0;
 }
 
 nav {
-  position: absolute;
-  top: 15px;
   ul {
     padding: 0;
     margin: 0;
@@ -95,37 +105,71 @@ nav {
       display: inline-block;
       padding: 2px;
       margin: 0 10px 10px 0;
-      a {
-        color: #777;
-        @extend .small;
-        @extend .radius;
-        @extend .button;
-        @include background(linear-gradient(top, #eee, #ddd));
-        @include single-box-shadow;
-        @include single-transition(all, 0.2s, ease-in-out);
+      &.icon {
+        padding-top: 4px;
+        a {
+          display: inline-block;
+        }
       }
-      &.active a, & a:hover {
-        color: #fff;
-        @include background(linear-gradient(top, $theme-primary, $theme-primary - 40));
+      &.right:first-child {
+        margin-right: 0;
       }
     }
   }
 }
 
-#search-form {
-  input {
-    @include border-radius;
-    border: 1px solid #372c28;
+@media only screen and (max-width: 650px) {
+  nav ul {
+    li {
+      display: none !important;
+    }
+    li.on-mobile {
+      display: inline-block !important;
+    }
   }
-  margin: 0;
-  padding: 3px;
 }
 
-#main {
-  background-color: $theme-bg;
-  padding-top: 40px;
-  min-height: 100%;
-  @include single-box-shadow(rgba(#000, 0.2), 0, -10px, 15px);
+/* Buttons - - - - - - - - */
+
+a.btn, a.btn:focus {
+  color: #777;
+  @extend .small;
+  @extend .radius;
+  @extend .button;
+  @include background(linear-gradient(top, #eee, #ddd));
+  @include single-box-shadow;
+  @include single-transition(all, 0.2s, ease-in-out);
+}
+.active a.btn, a.btn.active, a.btn:hover {
+  color: #fff;
+  @include background(linear-gradient(top, $theme-primary, $theme-primary - 40));
+}
+
+/* Search- - - - - - - - - */
+
+#search {
+  display: inline-block;
+  margin: 0;
+  input {
+    @include border-radius;
+    @include single-box-shadow;
+    border: none;
+    padding: 5px;
+  }
+}
+
+#search-results {
+  display: none;
+  @include border-radius;
+  color: #555;
+  padding: 15px;
+  background-color: rgba(#fff, 0.6);
+  p {
+    font-size: 15pt;
+  }
+  a {
+    color: $theme-secondary;
+  }
 }
 
 footer {
@@ -154,7 +198,7 @@ footer {
   }
   h2 {
     text-align: center;
-    font-size: 48pt;
+    font-size: 40pt;
     color: #555;
     font-weight: normal;
     margin-bottom: 20px;
@@ -170,6 +214,14 @@ footer {
     }
     a {
       color: $theme-secondary;
+    }
+    a.btn {
+      color: #777;
+      width: 60%;
+      margin: 0 auto;
+    }
+    a.btn:hover {
+      color: #fff;
     }
     .login-buttons {
       margin-top: 35px;
@@ -258,50 +310,50 @@ footer {
 
 /* Forms - - - - - - - - - */
 
-.simple_form {
-  select.date {
-    width: auto;
-  }
-  .radio {
-    input {
-      margin-right: 5px;
-    }
-  }
-  .hint, .help-inline {
-    display: block;
-    margin: 5px 0 0 150px;
-    font-size: smaller;
-    color: #777;
-  }
-  .error .error {
-    display: block;
-    margin-left: 150px;
-    color: red;
-    font-weight: bold;
-  }
-  .text-only {
-    margin-bottom: 10px;
-    label {
-      padding-top: 0;
-    }
-    .input {
-      margin-left: 150px;
-      font-size: 13px;
-      line-height: 18px;
-      padding-top: 0;
-    }
-  }
-  .input .ui-slider {
-    margin-top: 10px;
-  }
-}
+/*.simple_form {*/
+  /*select.date {*/
+    /*width: auto;*/
+  /*}*/
+  /*.radio {*/
+    /*input {*/
+      /*margin-right: 5px;*/
+    /*}*/
+  /*}*/
+  /*.hint, .help-inline {*/
+    /*display: block;*/
+    /*margin: 5px 0 0 150px;*/
+    /*font-size: smaller;*/
+    /*color: #777;*/
+  /*}*/
+  /*.error .error {*/
+    /*display: block;*/
+    /*margin-left: 150px;*/
+    /*color: red;*/
+    /*font-weight: bold;*/
+  /*}*/
+  /*.text-only {*/
+    /*margin-bottom: 10px;*/
+    /*label {*/
+      /*padding-top: 0;*/
+    /*}*/
+    /*.input {*/
+      /*margin-left: 150px;*/
+      /*font-size: 13px;*/
+      /*line-height: 18px;*/
+      /*padding-top: 0;*/
+    /*}*/
+  /*}*/
+  /*.input .ui-slider {*/
+    /*margin-top: 10px;*/
+  /*}*/
+/*}*/
 
-form.message {
-  input[type=text] {
-    width: 380px;
-  }
-  textarea {
-    width: 380px;
-    height: 250px;
-  }
-}
+/*form.message {*/
+  /*input[type=text] {*/
+    /*width: 380px;*/
+  /*}*/
+  /*textarea {*/
+    /*width: 380px;*/
+    /*height: 250px;*/
+  /*}*/
+/*}*/

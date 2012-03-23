@@ -1,5 +1,24 @@
 %h2= t('home.heading_html')
 
-= t('home.body_html', main_site_url: s('community.main_site_url'), community_name: s('community.name'), fb_login_url: user_omniauth_authorize_path(:facebook), :login_url => new_user_session_path)
+- if current_user
+  %ul.nav-buttons
+    %li
+      = link_to t('nav.profile'), my_profile_path, :class => 'btn'
+    %li
+      = link_to t('nav.groups'), groups_path, :class => 'btn'
+    - if current_user
+      - if current_user.roles?(:admin)
+        %li
+          = link_to t('nav.admin'), admin_dashboard_path, :class => 'btn'
+      %li
+        = link_to t('nav.log_out'), destroy_user_session_path, :method => :delete, :class => 'btn'
+- else
+  = t('home.body_html', main_site_url: s('community.main_site_url'), community_name: s('community.name'))
+  %ul.login-buttons
+    %li.by-fb
+      = link_to image_tag('fb_login.png', :alt => t('session.log_in_with_facebook')), user_omniauth_authorize_path(:facebook)
+    %li.by-email
+      or
+      = link_to t('session.log_in_with_email'), new_user_session_path
 
 = footer_content

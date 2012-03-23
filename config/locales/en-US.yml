@@ -97,10 +97,6 @@ en-US:
         Sign in below, or learn more about our church by visiting our main website
         <a href="%{main_site_url}">here</a>.
       </p>
-      <ul class="login-buttons">
-        <li class="by-fb"><a href="%{fb_login_url}"><img src="/assets/fb_login.png" alt="Log in with Facebook" style="vertical-align:middle;"/></a></li>
-        <li class="by-email">or <a href="%{login_url}">log in by email...</a></li>
-      </ul>
 
   messages:
     email:
@@ -117,6 +113,7 @@ en-US:
   nav:
     account: Account
     admin: Admin
+    groups: Groups
     home: Home
     profile: Profile
     search: Search
@@ -194,6 +191,7 @@ en-US:
     log_in_button: Log In
     log_in_heading: Log In
     log_in_with_email_intro_html: Optionally, you can log in with your email address and password. If you don't have an account, <a href="%{sign_up_path}">sign up</a>.
+    log_in_with_email: log in by email...
     log_in_with_facebook: Log in with Facebook
     success: You are now logged in.
 

@@ -3,11 +3,11 @@
 - content_for :meta do
   %ul.icons
     %li
-      %a.edit-icon{:href => edit_profile_path(@profile), :title => t('profile.edit_button')}
+      %a.edit-icon.shadow{:href => edit_profile_path(@profile), :title => t('profile.edit_button')}
     %li
-      %a.email-icon{:href => '#', :title => t('profile.links.message', :name => @profile.name)}
+      %a.email-icon.shadow{:href => '#', :title => t('profile.links.message', :name => @profile.name)}
     %li
-      %a.phone-icon{:href => '#', :title => t('profile.links.phone', :name => @profile.name)}
+      %a.phone-icon.shadow{:href => '#', :title => t('profile.links.phone', :name => @profile.name)}
 
 #profile
   = profile_pic_tag(@profile)
@@ -24,7 +24,7 @@
     .roles
       %ul
         - @profile.roles.each do |role|
-          %li.role-icon
+          %li.role-icon.secondary.small.no-hover
             - if role.name.present?
               = t('profile.roles.specific_html', :role_name => role.name, :group_name => role.group.name, :group_url => url_for(role.group))
             - else
@@ -32,4 +32,3 @@
 
 = javascript_include_tag 'http://maps.googleapis.com/maps/api/js?sensor=false'
 = javascript_include_tag 'map'
-= javascript_include_tag 'profile'
