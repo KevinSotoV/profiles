@@ -17,6 +17,12 @@ $theme-primary:        #33AABB;
 $theme-secondary:      #CC4433;
 $theme-shadow:         #726868;
 $theme-bg:             #CCDDDD;
+$theme-subtle:         #EEEEEE;
+
+$theme-alert-info: $theme-subtle;
+$theme-alert-success: $theme-primary;
+$theme-alert-warning: #E8840E;
+$theme-alert-error: $theme-secondary;
 
 /* Generic - - - - - - - - */
 
@@ -27,40 +33,6 @@ html, body {
 body {
   color: #333;
   background-color: $theme-bg;
-}
-
-.alert-box {
-  p {
-    font-size: 12pt !important;
-    margin: 5px;
-  }
-}
-
-.actions .right {
-  float: right;
-}
-
-ul.icons {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  li {
-    display: inline-block;
-    margin: 0;
-    padding: 0;
-    a {
-      display: block;
-      width: 42px;
-      height: 42px;
-      @extend .has-tip;
-      @extend .tip-right;
-      cursor: pointer;
-      border: none;
-      &:hover {
-        border: none;
-      }
-    }
-  }
 }
 
 /* Full-Screen BG Image- - */
@@ -131,19 +103,37 @@ nav {
 
 /* Buttons - - - - - - - - */
 
-a.btn, a.btn:focus {
+.btn, .btn:focus {
   color: #777;
   @extend .small;
   @extend .radius;
   @extend .button;
-  @include background(linear-gradient(top, #eee, #ddd));
+  @include background(linear-gradient(top, $theme-subtle, $theme-subtle - 10));
   @include single-box-shadow;
   @include single-transition(all, 0.2s, ease-in-out);
+  padding: 8px 20px;
 }
-.active a.btn, a.btn.active, a.btn:hover {
+
+nav .active .btn, .btn.active, .btn.primary, .btn:hover {
   color: #fff;
   @include background(linear-gradient(top, $theme-primary, $theme-primary - 40));
 }
+
+/* Alert Boxes - - - - - - */
+
+.alert-box {
+  p {
+    font-size: 12pt !important;
+    margin: 5px;
+  }
+}
+
+.alert-box.info    { background-color: $theme-alert-info;    }
+.alert-box.notice  { background-color: $theme-alert-info;    }
+.alert-box.success { background-color: $theme-alert-success; }
+.alert-box.warning { background-color: $theme-alert-warning; }
+.alert-box.error   { background-color: $theme-alert-error;   }
+.alert-box.alert   { background-color: $theme-alert-error;   }
 
 /* Search- - - - - - - - - */
 
@@ -308,52 +298,61 @@ footer {
   }
 }
 
+/* Tabs- - - - - - - - - - */
+
+dl.tabs {
+  border-bottom: 1px solid #BBB;
+  dd a {
+    @include border-top-radius;
+    border-color: #BBB;
+    &.active {
+      border-color: #BBB;
+      border-bottom-width: 1px;
+      height: 29px;
+    }
+  }
+}
+
 /* Forms - - - - - - - - - */
 
-/*.simple_form {*/
-  /*select.date {*/
-    /*width: auto;*/
-  /*}*/
-  /*.radio {*/
-    /*input {*/
-      /*margin-right: 5px;*/
-    /*}*/
-  /*}*/
-  /*.hint, .help-inline {*/
-    /*display: block;*/
-    /*margin: 5px 0 0 150px;*/
-    /*font-size: smaller;*/
-    /*color: #777;*/
-  /*}*/
-  /*.error .error {*/
-    /*display: block;*/
-    /*margin-left: 150px;*/
-    /*color: red;*/
-    /*font-weight: bold;*/
-  /*}*/
-  /*.text-only {*/
-    /*margin-bottom: 10px;*/
-    /*label {*/
-      /*padding-top: 0;*/
-    /*}*/
-    /*.input {*/
-      /*margin-left: 150px;*/
-      /*font-size: 13px;*/
-      /*line-height: 18px;*/
-      /*padding-top: 0;*/
-    /*}*/
-  /*}*/
-  /*.input .ui-slider {*/
-    /*margin-top: 10px;*/
-  /*}*/
-/*}*/
+form.nice {
+  textarea {
+    width: 700px;
+    height: 250px;
+  }
 
-/*form.message {*/
-  /*input[type=text] {*/
-    /*width: 380px;*/
-  /*}*/
-  /*textarea {*/
-    /*width: 380px;*/
-    /*height: 250px;*/
-  /*}*/
-/*}*/
+  .from, .to {
+    margin-bottom: 9px;
+  }
+
+  label.boolean, label.collection_radio, .inline label {
+    display: inline;
+  }
+
+  .input.radio {
+    margin-bottom: 10px;
+  }
+
+  .date select {
+    display: inline;
+  }
+
+  .checkbox-group {
+    margin: 10px 0;
+  }
+
+  fieldset {
+    border-color: #999;
+    padding: 15px 10px;
+  }
+
+  .actions {
+    border-top: 2px solid $theme-primary;
+    padding-top: 15px;
+    margin-top: 15px;
+    .right {
+      float: right;
+    }
+  }
+
+}

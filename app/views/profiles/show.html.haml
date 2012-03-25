@@ -2,12 +2,14 @@
 
 - content_for :meta do
   %ul.icons
+    - if can? :edit, @profile
+      %li
+        %a.edit-icon.shadow{:href => edit_profile_path(@profile), :title => t('profile.edit_button'), :class => 'has-tip'}
     %li
-      %a.edit-icon.shadow{:href => edit_profile_path(@profile), :title => t('profile.edit_button')}
-    %li
-      %a.email-icon.shadow{:href => '#', :title => t('profile.links.message', :name => @profile.name)}
-    %li
-      %a.phone-icon.shadow{:href => '#', :title => t('profile.links.phone', :name => @profile.name)}
+      %a.email-icon.shadow{:href => new_profile_message_path(@profile), :title => t('profile.links.message', :name => @profile.name), :class => 'has-tip'}
+    - if @profile.phone
+      %li
+        %a.phone-icon.shadow{:href => "tel:#{@profile.phone}", :title => @profile.phone, :class => 'has-tip'}
 
 #profile
   = profile_pic_tag(@profile)
@@ -17,7 +19,8 @@
     lives in
     %a.location{:href => '#'}= @profile.location
     %br.hide-on-phones
-  and is a valuable part of
+    and
+  is a valuable part of
   %span.community= s('community.name')
 
   - if @profile.roles.any?

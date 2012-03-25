@@ -1,11 +1,11 @@
 = errors_for @profile, :only => [:base]
 
-%ul.tabs{'data-tabs' => 'tabs'}
+%dl.tabs
   = tab_link t('profile.edit_form.tabs.profile'), '#profile_details', :default
   - if can? :administrate, @profile
     = tab_link t('profile.edit_form.tabs.admin'), '#admin'
 
-.tab-content
+%ul.tabs-content
   = tab_content '#profile_details', :default do
     = render 'profile_form'
   - if !@profile.new_record? && can?(:administrate, @profile)

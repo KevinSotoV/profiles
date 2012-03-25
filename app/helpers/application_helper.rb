@@ -82,8 +82,8 @@ module ApplicationHelper
       content, href = args
     end
     class_name = (params[:tab].nil? && default) || params[:tab] == href.to_s.sub(/^#/, '') ? 'active' : ''
-    content_tag(:li, :class => class_name) do
-      link_to(content, href)
+    content_tag(:dd) do
+      link_to(content, href, :class => class_name)
     end
   end
 
@@ -91,13 +91,13 @@ module ApplicationHelper
     id.sub!(/^#/, '')
     content = capture(&block)
     class_name = (params[:tab].nil? && default) || params[:tab] == id ? 'active' : ''
-    content_tag(:div, :id => id, :class => class_name) do
+    content_tag(:li, :id => "#{id}Tab", :class => class_name) do
       content
     end
   end
 
   def check_box_fields(label, fields)
-    content_tag(:div, :class => 'clearfix') do
+    content_tag(:div, :class => 'checkbox-group') do
       label_tag(fields.first[:name], label) +
       content_tag(:div, :class => 'input') do
         content_tag(:ul, :class => 'inputs-list') do
