@@ -1,10 +1,7 @@
-= simple_form_for @profile, :remote => !@profile.new_record? do |form|
+= simple_form_for @profile do |form|
   = form.input :name
-  = form.input :headline
-  = form.input :bio, :hint => t('profile.edit_form.bio_hint_html', :count => s('profile.bio_max_length').to_i - @profile.bio.to_s.size), :input_html => {'data-maxlength' => "#{s('profile.bio_max_length')} #profile_bio_count_remaining"}
   = form.input :gender, :collection => t('profile.edit_form.gender_selection').invert, :as => :radio
   = form.input :birthday, :start_year => 1900, :end_year => Date.today.year, :include_blank => true
-  = form.input :member_since, :as => :select, :collection => (1900..Date.today.year).to_a.reverse
   = form.input :location
   = form.input :phone
   .actions
