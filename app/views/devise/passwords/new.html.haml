@@ -3,5 +3,5 @@
 = simple_form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :post }) do |form|
   = devise_error_messages!
   = form.input :email
-  %fieldset.actions
+  .actions
     = form.submit t('registration.forgot_password_submit_button'), :class => 'btn primary'

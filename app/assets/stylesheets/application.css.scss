@@ -86,6 +86,9 @@ nav {
       &.right:first-child {
         margin-right: 0;
       }
+      .btn {
+        margin-bottom: 0;
+      }
     }
   }
 }
@@ -112,6 +115,7 @@ nav {
   @include single-box-shadow;
   @include single-transition(all, 0.2s, ease-in-out);
   padding: 8px 20px;
+  margin-bottom: 5px;
 }
 
 nav .active .btn, .btn.active, .btn.primary, .btn:hover {
