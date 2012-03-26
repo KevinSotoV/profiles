@@ -1,0 +1,12 @@
+%h2= @group.name
+
+%ul
+  - @roles.each do |role|
+    %li.clear-left
+      .tn
+        = link_to profile_pic_tag(role.profile, :tn), role.profile
+      = link_to role.profile.name, role.profile
+      - if role.name
+        %br
+        = role.name
+

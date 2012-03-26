@@ -40,11 +40,21 @@ body {
 h1, h2 {
   font-family: $theme-big-font;
   color: $theme-secondary;
+  margin-bottom: 25px;
 }
 
 h1 { font-size: 32pt; }
 h2 { font-size: 22pt; }
-h3 { font-size: 18pt; }
+h3 { font-size: 18pt; color: #555; }
+
+.tn {
+  float: left;
+  margin: 0 10px 0 0;
+}
+
+.clear-left {
+  clear: left;
+}
 
 /* Full-Screen BG Image- - */
 

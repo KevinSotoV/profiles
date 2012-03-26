@@ -78,6 +78,13 @@ en-US:
   feedback:
     form_errors_heading: There were errors.
 
+  groups:
+    heading: Groups
+    none: No groups
+    num_members:
+      one: "1 member"
+      other: "%{count} members"
+
   helpers:
     label:
       user:
