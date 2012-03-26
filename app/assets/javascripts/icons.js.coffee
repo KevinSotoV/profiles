@@ -48,7 +48,7 @@ renderIcon = (elm, icon) ->
   paper.underlay = paper.rect(0, 0, size.width, size.height).attr(fill: '#000', 'fill-opacity': 0, stroke: 'none')
   paper.icon = paper.path(icon_paths[icon]).scale(size.scale, size.scale, 0, 0).attr(fill: color, stroke: 'none')
 
-  unless elm.hasClass('no-hover')
+  unless elm.hasClass('no-hover') or navigator.userAgent.match(/android|iphone|ipad|ipod|blackberry/i)
     paper.underlay.hover(hin, hout)
     paper.icon.hover(hin, hout)
 
