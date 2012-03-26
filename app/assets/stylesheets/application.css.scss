@@ -24,6 +24,8 @@ $theme-alert-success: $theme-primary;
 $theme-alert-warning: #E8840E;
 $theme-alert-error: $theme-secondary;
 
+$theme-big-font: Bitter, Helvetica, Arial, sans-serif;
+
 /* Generic - - - - - - - - */
 
 html, body {
@@ -34,6 +36,15 @@ body {
   color: #333;
   background-color: $theme-bg;
 }
+
+h1, h2 {
+  font-family: $theme-big-font;
+  color: $theme-secondary;
+}
+
+h1 { font-size: 32pt; }
+h2 { font-size: 22pt; }
+h3 { font-size: 18pt; }
 
 /* Full-Screen BG Image- - */
 
@@ -285,7 +296,7 @@ footer {
       }
     }
   }
-  font-family: Bitter, Helvetica, Arial, sans-serif;
+  font-family: $theme-big-font;
   font-size: 32pt;
   color: #999;
   line-height: 1.3em;
@@ -375,5 +386,48 @@ form.nice {
       float: right;
     }
   }
+}
 
+/* Admin Dashboard - - - - */
+
+.admin-actions {
+  .pic {
+    float: left;
+    margin: 0 10px 0 0;
+  }
+  .actions {
+    clear: left;
+    margin-top: 10px;
+  }
+}
+
+.dashboard-heading {
+  margin-bottom: 20px;
+}
+
+.admin-box {
+  @include border-radius(5px);
+  background-color: #eee;
+  margin-bottom: 25px;
+  h3 {
+    color: #555;
+  }
+  .inner {
+    padding: 10px;
+  }
+  .chart {
+    height: 150px;
+    margin-bottom: 20px;
+  }
+  .data {
+    width: 100%;
+    display: none;
+  }
+  a.show-data {
+    padding-left: 15px;
+    background: url(/assets/arrow_collapse.gif) top left no-repeat;
+  }
+  a.expanded {
+    background: url(/assets/arrow_expand.gif) top left no-repeat;
+  }
 }

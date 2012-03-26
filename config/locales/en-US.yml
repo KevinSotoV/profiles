@@ -45,10 +45,10 @@ en-US:
       charts:
         detail_link: Details
         messages_by_date:
-          heading: Messages Sent by Date
+          heading: Messages Sent
           no_data: none
         sign_ups_by_date:
-          heading: Sign Ups by Date
+          heading: Sign Ups
           no_data: none
       heading: Admin Dashboard
     notifications:

@@ -1,11 +1,10 @@
 %h2.dashboard-heading= @title = t('admin.dashboard.heading')
 
 .row
-  .span8
+  .six.columns
     = render :partial => 'admin/dashboards/charts/sign_ups_by_date'
     = render :partial => 'admin/dashboards/charts/messages_by_date'
-  .span8
+  .six.columns
     = render :partial => 'actions'
 
-= stylesheet_link_tag 'admin_dashboard'
 = javascript_include_tag 'admin_dashboard'
