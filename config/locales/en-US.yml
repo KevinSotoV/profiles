@@ -165,10 +165,14 @@ en-US:
         admin: Admin
         profile: Profile
     friends: Friends
+    joiner: and
     links:
       message: "Send a message to %{name}"
       phone: "Call %{name}"
+    lives_at: lives at
+    lives_in: lives in
     member_since: "Member Since: %{year}"
+    part_of_html: "is a valuable part of <span class='community'>%{name}</span>"
     pic_alt:
       facebook: Log into Facebook.com to change your profile picture.
       gravatar: Log into Gravatar.com to change your profile picture.

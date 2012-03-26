@@ -90,4 +90,8 @@ module ProfilesHelper
     }.to_param
   end
 
+  def map_link(location, options)
+    link_to location, "http://maps.google.com/maps?q=#{u location}", options
+  end
+
 end

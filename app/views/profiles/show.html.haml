@@ -16,12 +16,14 @@
   %span.name= @profile.name
   %br.hide-on-phones
   - if @profile.location.present?
-    lives in
-    %a.location{:href => '#'}= @profile.location
+    - if @profile.location =~ /^\s*\d/
+      = t('profile.lives_at')
+    - else
+      = t('profile.lives_in')
+    = map_link @profile.location, :class => 'location'
     %br.hide-on-phones
-    and
-  is a valuable part of
-  %span.community= s('community.name')
+    = t('profile.joiner')
+  =t('profile.part_of_html', :name => s('community.name'))
 
   - if @profile.roles.any?
     .roles
@@ -32,9 +34,6 @@
               = t('profile.roles.specific_html', :role_name => role.name, :group_name => role.group.name, :group_url => url_for(role.group))
             - else
               = t('profile.roles.non_specific_html', :group_name => role.group.name, :group_url => url_for(role.group))
-
-= javascript_include_tag 'http://maps.googleapis.com/maps/api/js?sensor=false'
-= javascript_include_tag 'map'
 
 #phoneModal.reveal-modal
   %h2= t('profile.links.phone', :name => @profile.name)
