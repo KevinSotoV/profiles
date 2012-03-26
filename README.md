@@ -1,8 +1,6 @@
 # Church.IO Profiles
 
-**Profiles** is a humble little Rails 3 app meant to provide an online directory for churches and other close-knit communities.
-
-This app was birthed out of [OneBody](https://github.com/seven1m/onebody), a monolithic application built for social networking, among other things. The scope of **Profiles** is much less ambitious, opting only to recreate the search functionality, profile page and related features instead.
+**Profiles** is an online directory for churches and other close-knit communities, built on Rails 3.
 
 **BEWARE:** this app is early ALPHA quality at the moment, so not everything works yet.
 
@@ -12,9 +10,9 @@ This app was birthed out of [OneBody](https://github.com/seven1m/onebody), a mon
 
 * Login with Facebook or by Email
 * Profile Page
-* Custom Profile Themes (partially complete)
 * Search Directory
-* Send Email (soon)
+* Send Email
+* Groups (soon)
 
 ### Backend
 
@@ -29,8 +27,7 @@ This app was birthed out of [OneBody](https://github.com/seven1m/onebody), a mon
 * [Rails](http://rubyonrails.org)
 * [PostgreSQL](http://www.postgresql.org/)
 * [Devise](https://github.com/plataformatec/devise)
-* [Bootstrap](http://twitter.github.com/bootstrap/)
-* [pjax](https://github.com/defunkt/jquery-pjax)
+* [Foundation](http://foundation.zurb.com/)
 
 ...and many others...
 
@@ -38,7 +35,7 @@ This app was birthed out of [OneBody](https://github.com/seven1m/onebody), a mon
 
 Instructions below are meant for running the app **locally** (not on a server).
 
-1. Install Ruby 1.9.2 and bundler (`gem install bundler`).
+1. Install Ruby 1.9.3 and bundler (`gem install bundler`).
 2. Create your database (PostgreSQL recommended).
 3. Create a Facebook app for your community [here](https://developers.facebook.com/apps) (choose the website option) and give it the site URL of `http://localhost:3000`.
 4. Now run the following commands:
@@ -62,7 +59,7 @@ Check out the wonderful [installation instructions](http://church.io/profiles/in
 
 Catch Tim in the #church.io IRC channel on freenode, on Twitter at [@seven1m](https://twitter.com/seven1m), or by email at [tim@timmorgan.org](http://timmorgan.org).
 
-[http://church.io](http://church.io) hosts additional information avout this and other church software projects.
+[http://church.io](http://church.io) hosts additional information about this and other church software projects.
 
 ## Copyright & License
 
