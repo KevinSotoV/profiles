@@ -4,12 +4,12 @@
   %ul.icons
     - if can? :edit, @profile
       %li
-        %a.edit-icon.shadow{:href => edit_profile_path(@profile), :title => t('profile.edit_button'), :class => 'has-tip'}
+        %a.edit-icon.shadow{:href => edit_profile_path(@profile), :title => t('profile.edit_button')}
     %li
-      %a.email-icon.shadow{:href => new_profile_message_path(@profile), :title => t('profile.links.message', :name => @profile.name), :class => 'has-tip'}
+      %a.email-icon.shadow{:href => new_profile_message_path(@profile), :title => t('profile.links.message', :name => @profile.name)}
     - if @profile.phone
       %li
-        %a.phone-icon.shadow{:href => "tel:#{@profile.phone}", :title => @profile.phone, :class => 'has-tip'}
+        %a.phone-icon.shadow{:href => '#', 'data-reveal-id' => 'phoneModal', :title => t('profile.links.phone', :name => @profile.name)}
 
 #profile
   = profile_pic_tag(@profile)
@@ -35,3 +35,11 @@
 
 = javascript_include_tag 'http://maps.googleapis.com/maps/api/js?sensor=false'
 = javascript_include_tag 'map'
+
+#phoneModal.reveal-modal
+  %h2= t('profile.links.phone', :name => @profile.name)
+  %p
+    %i.phone-icon.large
+  %p
+    %a{:href => "tel:#{@profile.phone}"}= @profile.phone
+  %a.close-reveal-modal &#215;
