@@ -65,6 +65,13 @@ h3 { font-size: 18pt; color: #555; }
   background-repeat: no-repeat;
 }
 
+.white-overlay {
+  @include border-radius;
+  color: #555;
+  padding: 15px;
+  background-color: rgba(#fff, 0.6);
+}
+
 /* Layout - - - - - - - - -*/
 
 .meta {
@@ -78,15 +85,13 @@ h3 { font-size: 18pt; color: #555; }
 }
 
 #main {
-  padding-top: 40px;
-  @include single-box-shadow(rgba(#000, 0.2), 0, -10px, 15px);
+  padding-top: 15px;
 }
 
 /* Header and Nav- - - - - */
 
 header {
-  @include background(linear-gradient(top, $theme-shadow, $theme-shadow - 15));
-  padding: 25px 0;
+  padding-top: 25px;
 }
 
 nav {
@@ -237,10 +242,7 @@ footer {
   }
   article {
     text-align: center;
-    @include border-radius;
-    color: #555;
-    padding: 15px;
-    background-color: rgba(#fff, 0.6);
+    @extend .white-overlay;
     p {
       font-size: 15pt;
     }
@@ -273,6 +275,7 @@ footer {
 /* Profile - - - - - - - - */
 
 #profile {
+  @extend .white-overlay;
   a {
     color: $theme-primary;
     &:hover {
@@ -286,7 +289,6 @@ footer {
     }
   }
   .pic img {
-    @include single-box-shadow;
     margin-bottom: 20px;
   }
   .roles {
@@ -308,7 +310,7 @@ footer {
   }
   font-family: $theme-big-font;
   font-size: 32pt;
-  color: #999;
+  color: #777;
   line-height: 1.3em;
   .name {
     color: #555;
