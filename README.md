@@ -42,10 +42,8 @@ Instructions below are meant for running the app **locally** (not on a server).
 
 ```shell
 cd profiles
-cp config/settings.yml{.example,}
-vim config/settings.yml
-cp config/database.yml{.example,}
-vim config/database.yml
+rake profiles:config:create
+# edit config/settings.yml and config/database.yml
 bundle install
 rake db:reset
 rails server
