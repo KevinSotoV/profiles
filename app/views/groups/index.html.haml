@@ -1,0 +1,12 @@
+%h2= t('groups.heading')
+
+%ul
+  - @groups.each do |group|
+    %li
+      %h3
+        = link_to group.name, group
+      %p= t('groups.num_members', :count => group.profile_count.to_i)
+
+- if @groups.empty?
+  %p
+    %em= t('groups.none')

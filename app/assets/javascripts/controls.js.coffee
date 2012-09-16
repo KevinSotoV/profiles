@@ -6,10 +6,6 @@ $ ->
     $.ajax("#{resource}/alerts/#{id}", {type: 'delete'}) if id
     false
 
-  $('#aux .close, #aux .close-btn').live 'click', ->
-    $(@).parents('#aux').empty()
-    history.pushState({}, "profile", resource) if history.pushState
-    false
-
-  # pjax
-  $('a[data-pjax]').pjax()
+  ## tooltips
+  #$('.has-tooltip').tooltip
+    #placement: 'right'

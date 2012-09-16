@@ -5,8 +5,12 @@
 // the compiled file.
 //
 //= require jquery
+//= require jquery_ui
 //= require jquery_ujs
 //= require jquery.pjax
-//= require bootstrap-tabs
+//= require raphael
+//= require foundation
 //= require controls
+//= require icons
 //= require forms
+//= require layout

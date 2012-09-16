@@ -11,7 +11,7 @@ module Setting
     flattened = {}
     settings.each do |section, section_settings|
       section_settings.each do |name, value|
-        flattened["#{section.upcase}_#{name.upcase}"] = value
+        flattened["#{section.upcase}_#{name.upcase}"] = value.to_s
       end
     end
     flattened

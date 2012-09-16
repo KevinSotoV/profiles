@@ -2,59 +2,59 @@
 %html
   %head
     %title
-      = s('site.name')
-      - if @sub_title
-        == / #{@sub_title}
+      = Setting.s('site.name')
+      = "- #{@title}" if @title
     = stylesheet_link_tag    "application"
     = javascript_include_tag "application"
+    = font_include_tag "Bitter"
     = csrf_meta_tags
+    %meta{:name => 'viewport', :content => 'width=device-width, initial-scale=1.0'}
+    = bg_style_tag
     = yield(:head)
-  %body{:class => body_class, 'data-profile-path' => @profile && !@profile.new_record? && profile_path(@profile)}
 
-    .topbar
-      .fill
-        .container
-          %h3
-            %a{:href => '/'}= s('site.name')
-          - if current_user
-            %ul
-              %li{:class => params[:controller] == 'profiles' && @profile && @profile.user == current_user && 'active'}
-                = link_to t('nav.profile'), my_profile_path
-              %li{:class => params[:controller] == 'users' && 'active'}
-                = link_to t('nav.account'), edit_user_registration_path
-              - if current_user.roles?(:admin)
-                %li{:class => params[:controller] =~ /^admin/ && 'active'}
-                  = link_to t('nav.admin'), admin_dashboard_path
-              %li
-                = link_to t('nav.log_out'), destroy_user_session_path, :method => :delete
-            %form{:action => search_path, :method => :get, :id => 'search-form'}
-              = text_field_tag :q, params[:q], :placeholder => t('nav.search_placeholder')
-          - else
-            %ul
-              %li{:class => params[:controller] == 'homes' && 'active'}
-                = link_to t('nav.home'), root_path
-              %li
-                = link_to t('nav.log_in'), new_user_session_path
+  %body{:class => 'bg'}
 
-    #main
+    - if home?
       .container
-        - sidebar = yield(:sidebar).to_s
-        - if sidebar.blank?
-          #messages
-            = flash_messages
-          = yield
-        - else
-          .row
-            .span12.columns
-              = flash_messages
+        .row.no-margin
+          #home
+            .logo= logo_image_tag
+            %article
+              #messages= flash_messages
               = yield
-            .span4.columns
-              .sidebar= sidebar
-
-    .container
-      #footer
-        .content
-          == &copy; #{Date.today.year}, #{s 'community.name'} &middot;
-          %a{'href' => '/pages/privacy_policy'}= t('pages.privacy_policy')
-          &middot;
-          = t('app.powered_by_html')
+    - else
+      %header
+        .container
+          .row
+            .offset-by-one.eleven.columns
+              %nav.fixed
+                %ul
+                  %li.right.icon
+                    - if current_user
+                      = link_to '', destroy_user_session_path, :method => :delete, :class => 'door-icon small', :title => t('nav.log_out')
+                  %li.right.icon
+                    - if current_user && current_user.roles?(:admin)
+                      %a.gear-icon.small{:href => admin_dashboard_path, :title => t('nav.admin')}
+                  %li.right.on-mobile
+                    = form_tag '/search', :method => :get, :id => 'search' do
+                      = text_field_tag :q, nil, :placeholder => t('nav.search_placeholder'), :id => 'search-query'
+                  %li{:class => params[:controller] == 'homes' ? 'on-mobile active' : 'on-mobile'}
+                    = link_to t('nav.home'), root_path, :class => 'btn'
+                  - if current_user
+                    %li{:class => params[:controller] == 'profiles' && @profile && @profile.user == current_user && 'active'}
+                      = link_to t('nav.profile'), my_profile_path, :class => 'btn'
+                    %li{:class => params[:controller] == 'groups' && 'active'}
+                      = link_to t('nav.groups'), groups_path, :class => 'btn'
+                  - else
+                    %li
+                      = link_to t('nav.log_in'), new_user_session_path, :class => 'btn'
+      #main
+        .container
+          .row
+            - if meta = yield(:meta)
+              .meta= meta
+            %div{:class => meta ? 'body-with-meta' : 'body'}
+              .row
+                #messages= flash_messages
+                = yield
+                = footer_content

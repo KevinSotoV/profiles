@@ -2,7 +2,6 @@ class ProfilesController < ApplicationController
   before_filter :authenticate_user!
   before_filter :redirect_without_id!, :only => :show
   load_and_authorize_resource # sets @profile
-  before_filter :create_theme_if_missing!
 
   respond_to :html, :js
 
@@ -21,16 +20,11 @@ class ProfilesController < ApplicationController
   end
 
   def edit
-    @backgrounds = Theme.backgrounds
   end
 
   def update
     if @profile.update_attributes(params[:profile])
-      if params[:profile][:theme_attributes]
-        flash[:success] = t('profile.edit_form.save_success_refresh')
-      else
-        flash[:success] = t('profile.edit_form.save_success')
-      end
+      flash[:success] = t('profile.edit_form.save_success')
     end
     respond_with(@profile)
   end
@@ -47,10 +41,6 @@ class ProfilesController < ApplicationController
       end
       false
     end
-  end
-
-  def create_theme_if_missing!
-    @profile.create_theme_if_missing!
   end
 
 end

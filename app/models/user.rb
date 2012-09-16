@@ -1,4 +1,5 @@
 require 'bitmask_accessor'
+require 'digest/md5'
 
 class User < ActiveRecord::Base
   extend ActiveSupport::Memoizable
@@ -96,6 +97,10 @@ class User < ActiveRecord::Base
   def update_profile_from_oauth_access_token!(access_token)
     profile = self.profile || build_profile
     profile.update_from_oauth!(access_token)
+  end
+
+  def gravatar_hash
+    Digest::MD5.hexdigest(email.downcase.strip)
   end
 
   private

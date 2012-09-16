@@ -1,8 +1,35 @@
 module ApplicationHelper
+  extend ActiveSupport::Memoizable
+
+  def logo_image_tag
+    logo = File.exist?(Rails.root.join('app/assets/images/logo.png')) ? 'logo.png' : 'logo.default.png'
+    image_tag(logo, :alt => s('community.name'))
+  end
+  memoize :logo_image_tag
+
+  def bg_style_tag
+    path = File.exist?(Rails.root.join('app/assets/images/bg.jpg')) ? 'bg.jpg' : 'bg.default.jpg'
+    style = ".bg { background-image: url(/assets/#{path}); }"
+    content_tag(:style, style, :type => 'text/css').html_safe
+  end
+
+  def footer_content
+    content_tag(:footer) do
+      I18n.t('footer.copyright_html', :year => Date.today.year, :name => Setting.s('community.name')).html_safe +
+      ' &middot; '.html_safe +
+      link_to(I18n.t('pages.privacy_policy'), '/pages/privacy_policy') +
+      ' &middot; '.html_safe +
+      I18n.t('app.powered_by_html').html_safe +
+      if home? && credit = s('home.bg_credit')
+        "<br/> #{h credit}"
+      end.to_s.html_safe
+    end
+  end
+
   def flash_messages
     [:info, :success, :warning, :error, :alert, :notice].map do |type|
       if flash[type]
-        content_tag(:div, :class => "alert-message #{type}") do
+        content_tag(:div, :class => "alert-box #{type}") do
           close_button + content_tag(:p, h(flash[type]))
         end
       end
@@ -33,19 +60,6 @@ module ApplicationHelper
     url.to_s.sub(/^https?:\/\/(www\.)?/, '')
   end
 
-  def body_class
-    [].tap do |classes|
-      if @profile && @profile.theme
-        classes << 'profile'
-        classes << @profile.theme.bg_class if @profile.theme
-      elsif request.path == '/'
-        classes << 'home'
-      else
-        classes << 'generic'
-      end
-    end.join(' ')
-  end
-
   def close_button
     link_to '&#215;'.html_safe, '#', :class => 'close' 
   end
@@ -68,8 +82,8 @@ module ApplicationHelper
       content, href = args
     end
     class_name = (params[:tab].nil? && default) || params[:tab] == href.to_s.sub(/^#/, '') ? 'active' : ''
-    content_tag(:li, :class => class_name) do
-      link_to(content, href)
+    content_tag(:dd) do
+      link_to(content, href, :class => class_name)
     end
   end
 
@@ -77,13 +91,13 @@ module ApplicationHelper
     id.sub!(/^#/, '')
     content = capture(&block)
     class_name = (params[:tab].nil? && default) || params[:tab] == id ? 'active' : ''
-    content_tag(:div, :id => id, :class => class_name) do
+    content_tag(:li, :id => "#{id}Tab", :class => class_name) do
       content
     end
   end
 
   def check_box_fields(label, fields)
-    content_tag(:div, :class => 'clearfix') do
+    content_tag(:div, :class => 'checkbox-group') do
       label_tag(fields.first[:name], label) +
       content_tag(:div, :class => 'input') do
         content_tag(:ul, :class => 'inputs-list') do
@@ -102,5 +116,9 @@ module ApplicationHelper
 
   def check_box_field(label, name, value, checked)
     check_box_fields(label, [{:name => name, :value => value, :checked => checked}])
+  end
+
+  def font_include_tag(*fonts)
+    content_tag(:link, '', :href => "http://fonts.googleapis.com/css?family=#{fonts.join('|').sub(/\s/, '+')}", :rel => 'stylesheet', :type => 'text/css')
   end
 end

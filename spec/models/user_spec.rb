@@ -117,4 +117,14 @@ describe User do
       @user.errors[:notifications].should have(1).error
     end
   end
+
+  describe '#gravatar_hash' do
+    before do
+      @user = Factory.build(:user)
+    end
+
+    it 'generates a gravatar hash' do
+      @user.gravatar_hash.should eq('2b9b320416cd31020bb6844c3fadefd1')
+    end
+  end
 end

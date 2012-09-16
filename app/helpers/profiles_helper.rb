@@ -14,11 +14,13 @@ module ProfilesHelper
   }
 
   def profile_pic_tag(profile, type=:full)
-    content_tag(:div, :class => 'pic') do
-      if url = {:full => profile.full_image_url, :tn => profile.small_image_url}[type]
-        image_tag(url, :alt => profile.name)
-      else
-        image_tag(SILHOUETTE_IMAGES[type][profile.gender], :alt => profile.name)
+    me = profile == current_user.profile
+    source = profile.facebook_id ? 'facebook' : 'gravatar'
+    if url = {:full => profile.full_image_url, :tn => profile.small_image_url}[type]
+      content_tag(:div, :class => 'pic') do
+        class_name = "#{source}-profile-pic #{me ? 'my-profile-pic' : ''}"
+        alt = me ? t(source, :scope => 'profile.pic_alt') : profile.name
+        image_tag(url, :alt => alt, :title => alt, :class => class_name)
       end
     end
   end
@@ -32,13 +34,6 @@ module ProfilesHelper
         sanitize profile.bio
       end
     end
-  end
-
-  def layout_order(theme)
-    {
-      :left  => ['profile-box', 'alerts'],
-      :right => ['alerts', 'profile-box']
-    }[theme.box_pos.to_sym]
   end
 
   def alert_block(alert_class, content, actions, options={})
@@ -59,11 +54,6 @@ module ProfilesHelper
       if @profile.alerts?(:new)
         alerts << alert_block(:success, :new, [
                     link_to(t('profile.alert_new.edit_profile_button'), edit_profile_path(@profile), :class => 'btn small')])
-      end
-      if @profile.alerts?(:new_theme)
-        alerts << alert_block(:info, :new_theme, [
-                    link_to(t('profile.alert_new_theme.new_button'), profile_theme_path(@profile), :method => :delete, :class => 'btn small'),
-                    link_to(t('profile.alert_new_theme.edit_button'), edit_profile_path(@profile, :tab => 'theme'), :class => 'btn small')])
       end
     end.join("\n").html_safe
   end
@@ -98,6 +88,10 @@ module ProfilesHelper
       :sf       => true,
       :output   => 'xml'
     }.to_param
+  end
+
+  def map_link(location, options)
+    link_to location, "http://maps.google.com/maps?q=#{u location}", options
   end
 
 end

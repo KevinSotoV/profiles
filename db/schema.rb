@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111201051417) do
+ActiveRecord::Schema.define(:version => 20120321173505) do
 
   create_table "friendships", :force => true do |t|
     t.integer  "profile_id"
@@ -21,6 +21,12 @@ ActiveRecord::Schema.define(:version => 20111201051417) do
   end
 
   add_index "friendships", ["profile_id"], :name => "index_friendships_on_profile_id"
+
+  create_table "groups", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "messages", :force => true do |t|
     t.integer  "profile_id"
@@ -49,49 +55,19 @@ ActiveRecord::Schema.define(:version => 20111201051417) do
     t.integer  "alerts"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "member_since"
   end
 
   add_index "profiles", ["user_id"], :name => "index_profiles_on_user_id", :unique => true
   add_index "profiles", ["workflow_state"], :name => "index_profiles_on_workflow_state"
 
-  create_table "themes", :force => true do |t|
+  create_table "roles", :force => true do |t|
     t.integer  "profile_id"
-    t.string   "bg_image"
-    t.string   "bg_image_name",         :limit => 100
-    t.boolean  "bg_image_tiled",                       :default => false
-    t.string   "bg_image_byline",       :limit => 100
-    t.string   "bg_class",              :limit => 25
-    t.string   "bg_color_top",          :limit => 7
-    t.string   "bg_color_bottom",       :limit => 7
-    t.string   "box_pos",               :limit => 25
-    t.string   "box_bg_color",          :limit => 7
-    t.float    "box_bg_opacity"
-    t.string   "name_font_family",      :limit => 50
-    t.string   "name_font_weight",      :limit => 10
-    t.string   "name_font_style",       :limit => 10
-    t.string   "name_font_variant",     :limit => 10
-    t.integer  "name_line_height"
-    t.integer  "name_size"
-    t.string   "name_color",            :limit => 7
-    t.string   "headline_font_family",  :limit => 50
-    t.string   "headline_font_weight",  :limit => 10
-    t.string   "headline_font_style",   :limit => 10
-    t.string   "headline_font_variant", :limit => 10
-    t.integer  "headline_line_height"
-    t.integer  "headline_size"
-    t.string   "headline_color",        :limit => 7
-    t.string   "bio_font_family",       :limit => 50
-    t.string   "bio_font_weight",       :limit => 10
-    t.string   "bio_font_style",        :limit => 10
-    t.string   "bio_font_variant",      :limit => 10
-    t.integer  "bio_line_height"
-    t.integer  "bio_size"
-    t.string   "bio_color",             :limit => 7
+    t.integer  "group_id"
+    t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
-
-  add_index "themes", ["profile_id"], :name => "index_themes_on_profile_id"
 
   create_table "users", :force => true do |t|
     t.string   "provider",               :limit => 50

@@ -1,4 +1,4 @@
-%h2= t('registration.sign_up_heading')
+%h2= @title = t('registration.sign_up_heading')
 
 %p.push-down
   = link_to image_tag('fb_login.png', alt: 'registration.sign_up_with_facebook', style: 'vertical-align:middle;'),
@@ -11,8 +11,10 @@
   = form.input :email
   = form.input :password, :required => true
   = form.input :password_confirmation, :required => true
-  = form.input :thirteen_or_older, :as => :b_boolean, :inline => true
-  %fieldset.actions
-    .right
-      = link_to t('registration.forgot_password_button'), new_password_path(resource_name), :class => 'btn'
-    = form.submit t('registration.sign_up_button'), :class => 'btn primary'
+  = form.input :thirteen_or_older, :as => :boolean, :inline => true
+  .actions
+    .row
+      .six.columns
+        = form.submit t('registration.sign_up_button'), :class => 'btn primary'
+      .six.columns.text-right
+        = link_to t('registration.forgot_password_button'), new_password_path(resource_name), :class => 'btn'

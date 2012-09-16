@@ -1,22 +1,44 @@
-.row
-  - layout_order(@profile.theme).each do |part|
-    -# align profile-box on left or right depending on theme selection...
-    - if 'profile-box' == part
-      .span7.columns
-        #profile-box
-          = render :partial => 'profiles/box'
-    - if 'alerts' == part
-      .span9.columns
-        #aux
-          = yield(:aux)
-        #alerts
-          = profile_alerts
-          / don't collapse
-          &nbsp;
+- @title ||= @profile.name
 
-= javascript_include_tag 'http://maps.googleapis.com/maps/api/js?sensor=false'
-= javascript_include_tag 'map'
+- content_for :meta do
+  %ul.icons
+    - if can? :edit, @profile
+      %li
+        %a.edit-icon.shadow{:href => edit_profile_path(@profile), :title => t('profile.edit_button')}
+    %li
+      %a.email-icon.shadow{:href => new_profile_message_path(@profile), :title => t('profile.links.message', :name => @profile.name)}
+    - if @profile.phone
+      %li
+        %a.phone-icon.shadow{:href => '#', 'data-reveal-id' => 'phoneModal', :title => t('profile.links.phone', :name => @profile.name)}
 
-= theme_markup @profile.theme
+#profile
+  = profile_pic_tag(@profile)
+  %span.name= @profile.name
+  %br.hide-on-phones
+  - if @profile.location.present?
+    - if @profile.location =~ /^\s*\d/
+      = t('profile.lives_at')
+    - else
+      = t('profile.lives_in')
+    = map_link @profile.location, :class => 'location'
+    %br.hide-on-phones
+    = t('profile.joiner')
+  =t('profile.part_of_html', :name => s('community.name'))
 
-= javascript_include_tag 'profile'
+  - if @profile.roles.any?
+    .roles
+      %ul
+        - @profile.roles.each do |role|
+          %li.role-icon.secondary.small.no-hover
+            - if role.name.present?
+              = t('profile.roles.specific_html', :role_name => role.name, :group_name => role.group.name, :group_url => url_for(role.group))
+            - else
+              = t('profile.roles.non_specific_html', :group_name => role.group.name, :group_url => url_for(role.group))
+
+#phoneModal.reveal-modal
+  %h2= t('profile.links.phone', :name => @profile.name)
+  %p
+    %i.phone-icon.large
+  %p
+    %a{:href => "tel:#{@profile.phone}"}= @profile.phone
+  %a.close-reveal-modal &#215;

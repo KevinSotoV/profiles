@@ -13,8 +13,9 @@ Profiles::Application.routes.draw do
   resources :profiles do
     resources :messages
     resources :alerts
-    resource :theme
   end
+
+  resources :groups
 
   resource :search
   resource :home

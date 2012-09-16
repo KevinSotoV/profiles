@@ -15,7 +15,8 @@ class Message < ActiveRecord::Base
   def from_id=(id)    write_attribute(:from_id,      id); set_method end
 
   def set_method
-    if profile.try(:facebook_id) && from.try(:facebook_id)
+    if nil && profile.try(:facebook_id) && from.try(:facebook_id)
+      # disabled for now
       self.method = 'facebook'
     elsif SMTP_OK
       self.method = 'smtp'

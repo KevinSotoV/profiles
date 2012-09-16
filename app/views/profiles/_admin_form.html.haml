@@ -1,0 +1,9 @@
+= simple_form_for @profile.user, :url => admin_user_path(@profile.user) do |user|
+  = user.input :admin, :as => :boolean
+  %fieldset
+    %legend Notifications
+    = user.input :new_profile_notification, :as => :boolean
+  .actions
+    = user.submit t('profile.edit_form.save'), :class => 'btn primary'
+    = link_to t('profile.edit_form.cancel'), @profile, :class => 'btn close-btn'
+  .status
