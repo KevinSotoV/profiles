@@ -42,12 +42,16 @@ Instructions below are meant for running the app **locally** (not on a server).
 
 ```shell
 cd profiles
+bundle install
 rake profiles:config:create
 # edit config/settings.yml and config/database.yml
-bundle install
 rake db:reset
 rails server
 ```
+
+** You may need these **
+* libpq-dev
+* a js runtime like nodejs
 
 ## Server Deployment
 
