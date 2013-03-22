@@ -21,7 +21,7 @@ module ApplicationHelper
       ' &middot; '.html_safe +
       I18n.t('app.powered_by_html').html_safe +
       if home? && credit = s('home.bg_credit')
-        "<br/> #{h credit}"
+        "<br/> #{credit}" # removed the h before credit to allow the html to be processed
       end.to_s.html_safe
     end
   end
@@ -61,7 +61,7 @@ module ApplicationHelper
   end
 
   def close_button
-    link_to '&#215;'.html_safe, '#', :class => 'close' 
+    link_to '&#215;'.html_safe, '#', :class => 'close'
   end
 
   def sanitize(html)
@@ -71,7 +71,7 @@ module ApplicationHelper
   # tab_link ['text',] url, [default=false]
   def tab_link(*args, &block)
     if [Symbol, TrueClass, FalseClass].include?(args.last.class)
-      default = args.pop 
+      default = args.pop
     else
       default = false
     end
