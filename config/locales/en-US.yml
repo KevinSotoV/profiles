@@ -216,6 +216,7 @@ en-US:
   time:
     formats:
       hour: "%I%p"
+      long: "%B %d, %Y"
 
   footer:
     copyright_html: "&copy; %{year}, %{name}"
