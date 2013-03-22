@@ -25,15 +25,15 @@ en-US:
         current_password: Current Password
         email: Email
         new_profile_notification: New Profiles
-        password: New Password
+        password: Password
         password_confirmation: Repeat Password
         thirteen_or_older: Thirteen or Older
         timezone: Time Zone
-    errors: 
-      models: 
-        profile: 
-          attributes: 
-            user_id: 
+    errors:
+      models:
+        profile:
+          attributes:
+            user_id:
               taken: This user already has a profile.
 
   admin:
@@ -68,6 +68,8 @@ en-US:
   date:
     formats:
       birthday: "%d %B"
+    month_names: [~, January, February, March, April, May, June, July, August, September, October, November, December]
+    abbr_month_names: [~, Jan, Feb, Mar, Apr, May, Jun, Jul, Aug, Sep, Oct, Nov, Dec]
 
   devise:
     users:
@@ -137,7 +139,7 @@ en-US:
       body_html: <strong>Your profile has been created.</strong> Now would be a great time to edit your profile and add other information you want people to know about you.
       edit_profile_button: Edit your profile...
     attributes:
-      phone: 
+      phone:
     bio:
       gender:
         m: male
@@ -214,6 +216,7 @@ en-US:
   time:
     formats:
       hour: "%I%p"
+      long: "%B %d, %Y"
 
   footer:
     copyright_html: "&copy; %{year}, %{name}"
