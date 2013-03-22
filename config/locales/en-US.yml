@@ -25,7 +25,7 @@ en-US:
         current_password: Current Password
         email: Email
         new_profile_notification: New Profiles
-        password: New Password
+        password: Password
         password_confirmation: Repeat Password
         thirteen_or_older: Thirteen or Older
         timezone: Time Zone
