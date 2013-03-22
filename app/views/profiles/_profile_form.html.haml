@@ -1,7 +1,7 @@
 = simple_form_for @profile do |form|
   = form.input :name
   = form.input :gender, :collection => t('profile.edit_form.gender_selection').invert, :as => :radio
-  = form.input :birthday, :start_year => 1900, :end_year => Date.today.year, :include_blank => true
+  = form.input :birthday, :start_year => 1900, :end_year => Date.today.year, :include_blank => true, order: [:month, :day, :year]
   = form.input :location
   = form.input :phone
   .actions
