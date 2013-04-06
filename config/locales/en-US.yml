@@ -16,7 +16,7 @@ en-US:
       profile:
         name: Name
         headline: Headline
-        gender: Gender
+        gender: Gender Selection
         birthday: Birthday
         phone: Phone
         bio: Bio

@@ -172,6 +172,7 @@ ul.icons {
   p {
     font-size: 12pt !important;
     margin: 5px;
+    color:#555;
   }
 }
 
@@ -222,6 +223,11 @@ footer {
 .row.no-margin {
   margin: 0;
 }
+/* As long as the Home Screen looks like the rest of the site,
+   It should center like the rest of the site. IMHO justin  */
+.row.auto-margin {
+  margin: auto;
+}
 
 #home {
   @extend .six;
@@ -261,6 +267,9 @@ footer {
       margin-top: 35px;
       list-style: none;
       font-size: 10pt;
+    }
+    ul {
+      list-style: none;
     }
   }
   footer {
@@ -356,10 +365,14 @@ dl.tabs {
     }
   }
 }
+ul.tabs-content {
+  list-style:none;
+}
 
 /* Forms - - - - - - - - - */
 
 form.nice {
+  @extend .white-overlay;
   textarea {
     width: 700px;
     height: 250px;
