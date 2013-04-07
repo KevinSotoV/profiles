@@ -4,20 +4,15 @@ class Message < ActiveRecord::Base
 
   validates_presence_of :profile
   validates_presence_of :from
-  validates_inclusion_of :method, :in => ['facebook', 'mailto', 'smtp']
+  validates_inclusion_of :method, :in => ['mailto', 'smtp']
 
   attr_accessible :subject, :body
   attr_accessor :subject, :body
 
-  def profile=(p)     write_attribute(:profile_id, p.id); set_method end
-  def profile_id=(id) write_attribute(:profile_id,   id); set_method end
-  def from=(f)        write_attribute(:from_id,    f.id); set_method end
-  def from_id=(id)    write_attribute(:from_id,      id); set_method end
+  after_initialize :set_method
 
   def set_method
-    if profile.try(:facebook_id) && from.try(:facebook_id)
-      self.method = 'facebook'
-    elsif SMTP_OK
+    if SMTP_OK
       self.method = 'smtp'
     else
       self.method = 'mailto'
