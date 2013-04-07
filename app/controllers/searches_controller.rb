@@ -12,5 +12,9 @@ class SearchesController < ApplicationController
 
   def get_profile
     @profile = current_user.profile
+    unless @profile
+      flash[:warning] = t('registration.create_profile_message')
+      redirect_to new_profile_path
+    end
   end
 end
