@@ -14,7 +14,7 @@ feature 'Sign Up', %q{
     fill_in 'user_password_confirmation', :with => 'password'
     check 'user_thirteen_or_older'
     click_on 'Sign Up'
-    page.should have_content('Please create your profile in order to continue.')
+    expect(page).to have_content('Please create your profile in order to continue.')
   end
 
   scenario 'user signs up without indicating they are thirteen or older' do
@@ -23,7 +23,7 @@ feature 'Sign Up', %q{
     fill_in 'user_password',              :with => 'password'
     fill_in 'user_password_confirmation', :with => 'password'
     click_on 'Sign Up'
-    page.should have_css('.error #user_thirteen_or_older')
-    page.should have_content('is invalid')
+    expect(page).to have_css('.field_with_errors #user_thirteen_or_older')
+    expect(page).to have_content('is invalid')
   end
 end
