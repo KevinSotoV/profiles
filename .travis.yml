@@ -2,4 +2,6 @@ language: ruby
 rvm: 1.9.3
 services: postgresql
 before_script:
-  - 'echo -e "test:\n  adapter: postgresql\n  database: profiles_test\n  username: postgres" > config/database.yml'
+  - 'cp config/database.yml{.example,}'
+  - 'cp config/settings.yml{.example,}'
+  - 'RAILS_ENV=test rake db:create db:migrate'
