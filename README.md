@@ -62,13 +62,13 @@ Check out the wonderful [installation instructions](http://church.io/profiles/in
 
 Catch Tim in the #church.io IRC channel on freenode, on Twitter at [@seven1m](https://twitter.com/seven1m), or by email at [tim@timmorgan.org](http://timmorgan.org).
 
-[http://church.io](http://church.io) hosts additional information avout this and other church software projects.
+[http://church.io](http://church.io) hosts additional information about this and other church software projects.
 
 ## Copyright & License
 
 Images in `app/assets/images/bg` are licensed freely and distributable, but are copyright various individuals. Please see [info.yml](https://github.com/churchio/profiles/blob/master/app/assets/images/bg/info.yml) for author and license details.
 
-All code and other assets copyright (c) 2011, [Tim Morgan](http://timmorgan.org)
+All code and other assets copyright (c) 2011-2012, [Tim Morgan](http://timmorgan.org)
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 
