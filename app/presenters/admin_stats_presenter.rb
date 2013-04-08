@@ -1,6 +1,4 @@
 class AdminStatsPresenter
-  extend ActiveSupport::Memoizable
-
   def sign_ups_by_date(days=30)
     days -= 1
     date = Time.zone.now

@@ -1,6 +1,4 @@
 class Search < Struct.new(:q, :user)
-  extend ActiveSupport::Memoizable
-
   def initialize(params, user)
     self.q = params[:q]
     self.user = user
@@ -11,12 +9,12 @@ class Search < Struct.new(:q, :user)
   end
 
   def profiles
-    if show_all?
-      Profile.visible_or_user(user).where(['lower(name) like ?', "%#{self.q.downcase}%"]).all
-    else
-      [user.profile].compact
+    @profiles ||= begin
+      if show_all?
+        Profile.visible_or_user(user).where(['lower(name) like ?', "%#{self.q.downcase}%"]).all
+      else
+        [user.profile].compact
+      end
     end
   end
-
-  memoize :profiles
 end

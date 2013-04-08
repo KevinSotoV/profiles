@@ -1,8 +1,6 @@
 require 'bitmask_accessor'
 
 class User < ActiveRecord::Base
-  extend ActiveSupport::Memoizable
-
   include Workflow
 
   workflow do
@@ -74,9 +72,8 @@ class User < ActiveRecord::Base
 
   # assumes a fresh fb_token (set when user logs in)
   def graph
-    FbGraph::User.me(fb_token)
+    @graph ||= FbGraph::User.me(fb_token)
   end
-  memoize :graph
 
   def self.find_and_update(access_token)
     data = access_token['extra']['raw_info']

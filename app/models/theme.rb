@@ -44,8 +44,6 @@ class Theme < ActiveRecord::Base
   end
 
   class << self
-    extend ActiveSupport::Memoizable
-
     def build_with_defaults
       theme = Theme.new(
         :box_bg_color         => '#000',
@@ -87,10 +85,8 @@ class Theme < ActiveRecord::Base
     end
 
     def image_info
-      YAML::load_file(Rails.root.join('app/assets/images/bg/info.yml'))
+      @image_info ||= YAML::load_file(Rails.root.join('app/assets/images/bg/info.yml'))
     end
-
-    memoize :image_info
 
     def backgrounds
       {
