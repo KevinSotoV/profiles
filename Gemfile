@@ -28,6 +28,7 @@ end
 
 group :development do
   gem 'pry'
+  gem 'zeus'
 end
 
 group :test do
@@ -35,6 +36,6 @@ group :test do
   gem 'rspec-spies'
   gem 'factory_girl_rails'
   gem 'steak'
-  gem 'spork'
   gem 'watchr'
+  gem 'zeus'
 end
