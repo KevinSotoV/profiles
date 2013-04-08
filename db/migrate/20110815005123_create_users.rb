@@ -3,15 +3,31 @@ class CreateUsers < ActiveRecord::Migration
     create_table :users do |t|
       t.string :provider, :uid, :limit => 50
       t.timestamps
-      t.database_authenticatable :null => false
-      t.recoverable
-      t.rememberable
-      t.trackable
-      t.token_authenticatable
       t.string :workflow_state, :limit => 255, :default => 'pending_review'
       t.integer :roles
       t.string :timezone, :limit => 50
       t.string :fb_token, :limit => 100
+
+      ## Database authenticatable
+      t.string :email,              :null => false, :default => ""
+      t.string :encrypted_password, :null => false, :default => ""
+
+      ## Recoverable
+      t.string   :reset_password_token
+      t.datetime :reset_password_sent_at
+
+      ## Rememberable
+      t.datetime :remember_created_at
+
+      ## Trackable
+      t.integer  :sign_in_count, :default => 0
+      t.datetime :current_sign_in_at
+      t.datetime :last_sign_in_at
+      t.string   :current_sign_in_ip
+      t.string   :last_sign_in_ip
+
+      # Token authenticatable
+      t.string :authentication_token
     end
 
     add_index :users, :email,                :unique => true

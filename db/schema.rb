@@ -16,8 +16,8 @@ ActiveRecord::Schema.define(:version => 20111201051417) do
   create_table "friendships", :force => true do |t|
     t.integer  "profile_id"
     t.integer  "friend_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   add_index "friendships", ["profile_id"], :name => "index_friendships_on_profile_id"
@@ -26,8 +26,8 @@ ActiveRecord::Schema.define(:version => 20111201051417) do
     t.integer  "profile_id"
     t.integer  "from_id"
     t.string   "method",     :limit => 50
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",               :null => false
+    t.datetime "updated_at",               :null => false
   end
 
   create_table "profiles", :force => true do |t|
@@ -47,8 +47,8 @@ ActiveRecord::Schema.define(:version => 20111201051417) do
     t.string   "twitter_url"
     t.string   "workflow_state",                :default => "hidden"
     t.integer  "alerts"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",                                          :null => false
+    t.datetime "updated_at",                                          :null => false
   end
 
   add_index "profiles", ["user_id"], :name => "index_profiles_on_user_id", :unique => true
@@ -87,8 +87,8 @@ ActiveRecord::Schema.define(:version => 20111201051417) do
     t.integer  "bio_line_height"
     t.integer  "bio_size"
     t.string   "bio_color",             :limit => 7
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",                                              :null => false
+    t.datetime "updated_at",                                              :null => false
   end
 
   add_index "themes", ["profile_id"], :name => "index_themes_on_profile_id"
@@ -96,23 +96,23 @@ ActiveRecord::Schema.define(:version => 20111201051417) do
   create_table "users", :force => true do |t|
     t.string   "provider",               :limit => 50
     t.string   "uid",                    :limit => 50
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.string   "email",                                 :default => "",               :null => false
-    t.string   "encrypted_password",     :limit => 128, :default => "",               :null => false
+    t.datetime "created_at",                                                         :null => false
+    t.datetime "updated_at",                                                         :null => false
+    t.string   "workflow_state",                       :default => "pending_review"
+    t.integer  "roles"
+    t.string   "timezone",               :limit => 50
+    t.string   "fb_token"
+    t.string   "email",                                :default => "",               :null => false
+    t.string   "encrypted_password",                   :default => "",               :null => false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",                         :default => 0
+    t.integer  "sign_in_count",                        :default => 0
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
     t.string   "authentication_token"
-    t.string   "workflow_state",                        :default => "pending_review"
-    t.integer  "roles"
-    t.string   "timezone",               :limit => 50
-    t.string   "fb_token"
     t.boolean  "thirteen_or_older"
     t.integer  "notifications"
   end
