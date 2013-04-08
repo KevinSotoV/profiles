@@ -43,7 +43,7 @@ module ProfilesHelper
 
   def alert_block(alert_class, content, actions, options={})
     options.reverse_merge!(:close => true)
-    content_tag(:div, :class => "alert-message block-message #{alert_class}", :id => content) do
+    content_tag(:div, :class => "alert alert-block alert-#{alert_class}", :id => content) do
       (options[:close] ? close_button : '') +
       content_tag(:h2, t("profile.alert_#{content}.heading")) +
       content_tag(:p,  t("profile.alert_#{content}.body_html")) +

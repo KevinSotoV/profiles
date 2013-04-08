@@ -2,7 +2,7 @@ module ApplicationHelper
   def flash_messages
     [:info, :success, :warning, :error, :alert, :notice].map do |type|
       if flash[type]
-        content_tag(:div, :class => "alert-message #{type}") do
+        content_tag(:div, :class => "alert alert-block alert-#{type}") do
           close_button + content_tag(:p, h(flash[type]))
         end
       end
@@ -56,6 +56,7 @@ module ApplicationHelper
 
   # tab_link ['text',] url, [default=false]
   def tab_link(*args, &block)
+    # FIXME this is a mess
     if [Symbol, TrueClass, FalseClass].include?(args.last.class)
       default = args.pop 
     else
@@ -73,11 +74,12 @@ module ApplicationHelper
     end
   end
 
-  def tab_content(id, default=false, &block)
+  def tab_pane(id, default=false, &block)
+    # FIXME this is a mess
     id.sub!(/^#/, '')
     content = capture(&block)
     class_name = (params[:tab].nil? && default) || params[:tab] == id ? 'active' : ''
-    content_tag(:div, :id => id, :class => class_name) do
+    content_tag(:div, :id => id, :class => "tab-pane #{class_name}") do
       content
     end
   end

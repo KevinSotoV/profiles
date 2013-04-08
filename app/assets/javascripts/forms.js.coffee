@@ -30,10 +30,11 @@ $ ->
     else if remaining < 10
       countdown.addClass('char-count-warning')
 
-  $('textarea[data-maxlength]').live 'keyup', (e) ->
+  $(document).on 'keyup', 'textarea[data-maxlength]', (e) ->
     charCountTicker $(e.target)
-  .each ->
-    charCountTicker $(@)
+  # FIXME how to run upon field render?
+  #.each ->
+    #charCountTicker $(@)
 
 $(document).bind 'ajaxSend', (event, request) ->
   $('#messages').empty()

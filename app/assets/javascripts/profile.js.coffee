@@ -1,4 +1,4 @@
-$('#search-form').live 'submit', (e)->
+$(document).on 'submit', '#search-form', (e)->
   e.preventDefault()
   $.pjax
     container: '#aux'

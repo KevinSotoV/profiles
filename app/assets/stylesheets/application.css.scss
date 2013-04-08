@@ -1,4 +1,4 @@
-//= require bootstrap-1.4.0.min.css
+//= require bootstrap
 
 @import "compass/css3/border-radius";
 @import "compass/css3/opacity";
@@ -14,16 +14,20 @@ body {
 }
 
 // override bootstrap weirdness
-html,body{background:none;}
-.inputs-list input[type=radio],.inputs-list input[type=checkbox]{margin-bottom:0;margin-left:0;float:none;}
-.inputs-list li.inline label { display: inline; margin-left: 0 }
+html, body { background: none; }
+ul.inputs-list { list-style-type: none; margin-left: 0; }
+.inputs-list input[type=radio], .inputs-list input[type=checkbox] { margin-bottom: 0; margin-left: 0; float: none; }
+.inputs-list li.inline label { display: inline; margin-left: 5px; }
 
-.alert-message.block-message {
+.alert.alert-block {
+  @include single-box-shadow;
   h2 {
     font-size: 16pt;
-    margin-bottom: 5px;
+    margin: 0;
   }
-  @include single-box-shadow;
+  .alert-actions {
+    margin-top: 10px;
+  }
 }
 
 .char-count-warning {
@@ -40,7 +44,7 @@ html,body{background:none;}
   width: auto;
 }
 
-.actions .right {
+.form-actions .right {
   float: right;
 }
 
@@ -106,6 +110,8 @@ html,body{background:none;}
     min-height: 528px;
     background: #fff url(/assets/tree.jpg) top center no-repeat;
     #welcome {
+      // FIXME hack because Twitter changed from 16 cols to 12 cols and now our cols don't line up
+      margin-left: 15px;
       margin-top: 80px;
       h2 {
         margin-bottom: 25px;
@@ -153,9 +159,10 @@ html,body{background:none;}
     background-color: rgba(0, 0, 0, 0.4);
     @include border-top-radius(5px);
     padding: 5px 15px;
+    margin: 0;
   }
   .pic {
-    margin-left: 15px;
+    margin: 0 0 15px 15px;
     float: right;
     img {
       width: 120px;
@@ -170,7 +177,7 @@ html,body{background:none;}
   .map {
     clear: right;
     margin-top: 20px;
-    width: 370px;
+    width: 430px;
     height: 150px;
   }
 }
@@ -199,13 +206,6 @@ html,body{background:none;}
     border: none;
     padding: 15px;
     margin-bottom: 25px;
-    .simple_form {
-      legend { padding-left: 90px; }
-      label { width: 70px; }
-      .input label { width: auto; }
-      .actions { padding-left: 90px; }
-      .input, .hint { margin-left: 90px; }
-    }
   }
   .status {
     margin-top: 15px;
@@ -284,7 +284,7 @@ html,body{background:none;}
   }
   .hint, .help-inline {
     display: block;
-    margin: 5px 0 0 150px;
+    margin: 5px 0;
     font-size: smaller;
     color: #777;
   }
@@ -300,11 +300,13 @@ html,body{background:none;}
       padding-top: 0;
     }
     .input {
-      margin-left: 150px;
       font-size: 13px;
       line-height: 18px;
       padding-top: 0;
     }
+  }
+  .input {
+    margin-bottom: 5px;
   }
 }
 
@@ -315,10 +317,10 @@ html,body{background:none;}
 
 form.message {
   input[type=text] {
-    width: 380px;
+    width: 400px;
   }
   textarea {
-    width: 380px;
+    width: 400px;
     height: 250px;
   }
 }
