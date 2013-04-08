@@ -1,6 +1,6 @@
 source 'http://rubygems.org'
 
-gem 'rails', '~> 3.1.0'
+gem 'rails', '~> 3.2.0'
 
 gem 'pg'
 gem 'devise'
@@ -20,10 +20,10 @@ gem 'sanitize'
 # gem 'bcrypt-ruby', '~> 3.0.0'
 
 group :assets do
-  gem 'sass-rails', '~> 3.1.4'
-  gem 'coffee-rails', '~> 3.1.1'
-  gem 'uglifier', '>= 1.0.3'
-  gem 'compass', '>= 0.12.alpha.0'
+  gem 'sass-rails'
+  gem 'coffee-rails'
+  gem 'uglifier'
+  gem 'compass-rails'
 end
 
 group :development do
