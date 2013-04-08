@@ -15,6 +15,7 @@
                   - if user.email
                     = mail_to user.email
                   = link_to simple_url(user.profile.facebook_url), user.profile.facebook_url
+                  %br
                   = user.profile.phone
                   %br
                   = l(user.created_at, :format => :long)
