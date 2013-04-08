@@ -12,8 +12,14 @@
             - messages.each do |message|
               .message
                 = l message.created_at, :format => :hour
-                = link_to message.from.name, message.from
+                - if message.from
+                  = link_to message.from.name, message.from
+                - else
+                  %em unknown
                 &raquo;
-                = link_to message.profile.name, message.profile
+                - if message.profile
+                  = link_to message.profile.name, message.profile
+                - else
+                  %em unknown
             - if messages.empty?
               %em= t('admin.dashboard.charts.messages_by_date.no_data')
