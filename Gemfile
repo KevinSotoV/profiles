@@ -29,6 +29,7 @@ end
 group :development do
   gem 'pry'
   gem 'zeus'
+  gem 'rspec-rails'
 end
 
 group :test do

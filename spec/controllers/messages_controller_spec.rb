@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe MessagesController do
+describe MessagesController, :type => :controller do
   describe 'GET new' do
     context 'given no configured smtp server' do
       before do
