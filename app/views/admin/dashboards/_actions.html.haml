@@ -22,7 +22,7 @@
                 - else
                   = user.id
               %td.buttons
-                = link_to t('admin.dashboard.actions.activate'), admin_user_path(user, :do => :activate), :method => :put, :remote => true, :class => 'btn success'
-                = link_to t('admin.dashboard.actions.reject'),   admin_user_path(user, :do => :reject  ), :method => :put, :remote => true, :class => 'btn danger'
+                = link_to t('admin.dashboard.actions.activate'), admin_user_path(user, :do => :activate), :method => :put, :remote => true, :class => 'btn btn-success'
+                = link_to t('admin.dashboard.actions.reject'),   admin_user_path(user, :do => :reject  ), :method => :put, :remote => true, :class => 'btn btn-danger'
     - else
       %em= t('admin.dashboard.actions.none')
