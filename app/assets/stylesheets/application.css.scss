@@ -1,4 +1,5 @@
 //= require bootstrap
+//= require bootstrap-responsive
 
 @import "compass/css3/border-radius";
 @import "compass/css3/opacity";
@@ -93,8 +94,16 @@ ul.inputs-list { list-style-type: none; margin-left: 0; }
 #search-form {
   float: right;
   input {
-    width: 275px;
+    width: 250px;
   }
+}
+
+.btn-navbar {
+  width: 25px;
+  margin-bottom:5px;
+  -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.3), 0 1px 0 rgba(255, 255, 255, 0.2) !important;
+  -moz-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.3), 0 1px 0 rgba(255, 255, 255, 0.2) !important;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.3), 0 1px 0 rgba(255, 255, 255, 0.2) !important;
 }
 
 .sidebar {
