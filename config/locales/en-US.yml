@@ -28,15 +28,15 @@ en-US:
         current_password: Current Password
         email: Email
         new_profile_notification: New Profiles
-        password: New Password
+        password: Password
         password_confirmation: Repeat Password
         thirteen_or_older: Thirteen or Older
         timezone: Time Zone
-    errors: 
-      models: 
-        profile: 
-          attributes: 
-            user_id: 
+    errors:
+      models:
+        profile:
+          attributes:
+            user_id:
               taken: This user already has a profile.
 
   admin:
@@ -84,6 +84,7 @@ en-US:
         name: Full Name
         email: Email
         password: Password
+        new_password: New Password
         password_confirmation: Password (again)
 
   home:
@@ -138,7 +139,7 @@ en-US:
       new_button: Another design please!
       edit_button: Let me make my own...
     attributes:
-      phone: 
+      phone:
     birthday: Birthday of %{name}
     default_headline: Christ Follower
     edit_button: Edit Profile
@@ -175,7 +176,7 @@ en-US:
     send_message: Send Message
     theme:
       bg_image_byline_html: "%{name} by %{byline}"
-  
+
   registration:
     create_profile_message: Please create your profile in order to continue.
     forgot_password_heading: Forgot your password?
