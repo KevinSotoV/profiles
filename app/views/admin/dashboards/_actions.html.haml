@@ -1,6 +1,6 @@
 .admin-box
   .inner
-    %h3 Profiles Pending Activation
+    %h3= t('admin.dashboard.actions.heading')
 
     - if @actions.pending_review.any?
       %table.admin-actions

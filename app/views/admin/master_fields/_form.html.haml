@@ -1,0 +1,18 @@
+= simple_form_for @master_field, :remote => true, :url => admin_master_fields_path do |form|
+  = t('admin.dashboard.custom_fields.created_by_disabled')
+  = form.input :created_by, :as => 'hidden',:input_html => {:value => current_user.email}
+  = t('admin.dashboard.custom_fields.applies_to_disabled')
+  = form.input :applies_to, :as => 'hidden', :input_html => {:value => "Profile"}
+  = form.simple_fields_for @custom_field do |cf|
+    = cf.input :label
+    = cf.input :label_hidden, :as => :radio_buttons, :default => false
+    = cf.input :content
+    = cf.input :content_max_length
+    = cf.input :visible, :as => :radio_buttons, :hint => t('admin.dashboard.custom_fields.visible_hint'), :default => true
+    = cf.input :administrative_use, :as => :radio_buttons, :hint => t('admin.dashboard.custom_fields.admin_use_hint'), :default => false
+    = cf.input :user_editable, :as => :radio_buttons, :hint => t('admin.dashboard.custom_fields.user_edit_hint'), :default => true
+    = cf.input :style, collection: ["Normal", "Important", "Small"], :default => "Normal"
+    = cf.input :data_type, collection: ["String", "Date"], :default => "String"
+    = cf.input :created_by, :as => 'hidden', :input_html => {:value => current_user.email}
+  = form.submit t('admin.dashboard.custom_fields.save'), :class => 'btn primary'
+= link_to t('admin.dashboard.custom_fields.back'), admin_dashboard_path, :class => "btn close-btn"

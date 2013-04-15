@@ -22,5 +22,6 @@ Profiles::Application.routes.draw do
   namespace :admin do
     resource :dashboard
     resources :users
+    resources :master_fields
   end
 end

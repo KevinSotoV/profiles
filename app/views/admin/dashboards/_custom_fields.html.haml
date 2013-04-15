@@ -1,0 +1,31 @@
+.admin-box
+  .inner
+    %h3= t('admin.dashboard.custom_fields.heading')
+
+    - if @custom_fields
+      %table.admin-actions
+        %tbody
+          -@custom_fields.master_fields.each do |key,field|
+            %tr{:id => "field-#{key.id}"}
+              %td
+                %em= "Label"
+                %br
+                %em= "Created By"
+                %br
+                %em= "Created On"
+              %td
+                = field.label
+                %br
+                = field.created_by
+                %br
+                = l(field.created_at, :format => :long)
+              %td.buttons
+                %br
+                = link_to t('admin.dashboard.custom_fields.edit'), edit_admin_master_field_path(:id => key.id)
+                %br
+                = link_to t('admin.dashboard.custom_fields.delete'), admin_master_field_path(:id => key.id), :confirm => t('admin.dashboard.custom_fields.confirm_delete'), :method => 'delete'
+    - else
+      %em= t('admin.dashboard.custom_fields.none')
+
+    %table.admin-actions
+      = link_to t('admin.dashboard.custom_fields.add'), new_admin_master_field_path, :class => 'btn primary'

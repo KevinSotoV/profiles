@@ -14,6 +14,7 @@ class Profile < ActiveRecord::Base
   has_many :friendships, :dependent => :destroy
   has_many :friends, :through => :friendships
   has_many :messages
+  has_many :custom_fields, :dependent => :destroy
   has_one :theme, :order => 'id', :dependent => :destroy
 
   scope :visible, where(:workflow_state => 'visible')

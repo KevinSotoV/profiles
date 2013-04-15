@@ -42,6 +42,7 @@ en-US:
   admin:
     dashboard:
       actions:
+        heading: Profiles Pending Activation
         activate: Activate
         reject: Reject
         none: No profiles pending activation.
@@ -53,6 +54,23 @@ en-US:
         sign_ups_by_date:
           heading: Sign Ups by Date
           no_data: none
+      custom_fields:
+        heading: Global Custom Fields
+        new_form_heading: Create a New Field
+        edit_form_heading: Edit Field
+        add: Add Field
+        save: Save Field
+        none: There are no Global Custom Fields, you should create some.
+        back: Back to Dashboard
+        edit: Edit Field
+        delete: Delete
+        confirm_delete: Are you sure you want to delete this master field forever?
+        success_create: Successfully Created Field!
+        created_by_disabled: Created by You
+        applies_to_disabled: Only Applies To 'Profile'
+        visible_hint: Should this field be visible to the user?
+        admin_use_hint: Is this field for Administrative Use Only?
+        user_edit_hint: Should the user be able to edit the Label and Content?
       heading: Admin Dashboard
     notifications:
       footer: |-
